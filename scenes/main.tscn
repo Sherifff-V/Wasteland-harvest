@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://brovn6bd083te"]
 
-[ext_resource type="Script" uid="uid://csotvbgp58sqn" path="res://scripts/player/Player.cs" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://oo7iutuif107" path="res://scripts/player/Player.gd" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cxmwkvvh2vkvf" path="res://sprites/дед .png" id="2_tbgi4"]
-[ext_resource type="Script" uid="uid://c50lcqlhg4svq" path="res://scripts/player/InputComponent.cs" id="3_tefeu"]
-[ext_resource type="Script" uid="uid://c7y77si48v7rn" path="res://scripts/player/MovementComponent.cs" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://ds247r3kbrh4k" path="res://scripts/player/InputComponent.gd" id="3_tbgi4"]
+[ext_resource type="Script" uid="uid://c3ce18u7165f" path="res://scripts/player/MovementComponent.gd" id="4_tefeu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyhfs"]
 radius = 12.0
@@ -24,7 +24,7 @@ position = Vector2(2.3841858e-07, 2.3841858e-07)
 texture = ExtResource("2_tbgi4")
 
 [node name="InputComponent" type="Node" parent="Player" unique_id=221181934]
-script = ExtResource("3_tefeu")
+script = ExtResource("3_tbgi4")
 
 [node name="MovementComponent" type="Node" parent="Player" unique_id=317767482]
-script = ExtResource("4_o6xl0")
+script = ExtResource("4_tefeu")
