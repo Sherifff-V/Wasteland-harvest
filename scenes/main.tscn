@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://c50lcqlhg4svq" path="res://scripts/player/InputComponent.cs" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://c7y77si48v7rn" path="res://scripts/player/MovementComponent.cs" id="4_o6xl0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_dc6gq"]
-radius = 19.104973
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyhfs"]
+radius = 12.0
+height = 34.0
 
 [node name="Main" type="Node2D" unique_id=859579644]
 
@@ -15,7 +16,7 @@ position = Vector2(19, 20)
 script = ExtResource("1_jyhfs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=81355650]
-shape = SubResource("CircleShape2D_dc6gq")
+shape = SubResource("CapsuleShape2D_jyhfs")
 
 [node name="Дед" type="Sprite2D" parent="Player" unique_id=588398627]
 texture_filter = 3
