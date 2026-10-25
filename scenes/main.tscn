@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brovn6bd083te"]
+
+[ext_resource type="Script" uid="uid://csotvbgp58sqn" path="res://scripts/player/Player.cs" id="1_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cxmwkvvh2vkvf" path="res://sprites/дед .png" id="2_tbgi4"]
+[ext_resource type="Script" uid="uid://c50lcqlhg4svq" path="res://scripts/player/InputComponent.cs" id="3_tefeu"]
+[ext_resource type="Script" uid="uid://c7y77si48v7rn" path="res://scripts/player/MovementComponent.cs" id="4_o6xl0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dc6gq"]
+radius = 19.104973
+
+[node name="Main" type="Node2D" unique_id=859579644]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=336309734]
+position = Vector2(19, 20)
+script = ExtResource("1_jyhfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=81355650]
+shape = SubResource("CircleShape2D_dc6gq")
+
+[node name="Дед" type="Sprite2D" parent="Player" unique_id=588398627]
+texture_filter = 3
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+texture = ExtResource("2_tbgi4")
+
+[node name="InputComponent" type="Node" parent="Player" unique_id=221181934]
+script = ExtResource("3_tefeu")
+
+[node name="MovementComponent" type="Node" parent="Player" unique_id=317767482]
+script = ExtResource("4_o6xl0")
