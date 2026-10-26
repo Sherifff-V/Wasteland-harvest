@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.7", "C#", "Mobile")
 config/icon="uid://cxmwkvvh2vkvf"
 
+[autoload]
+
+GameClock="*uid://bjrhoq7cec0vy"
+
 [display]
 
 window/stretch/mode="canvas_items"

@@ -28,3 +28,13 @@ script = ExtResource("3_tbgi4")
 
 [node name="MovementComponent" type="Node" parent="Player" unique_id=317767482]
 script = ExtResource("4_tefeu")
+
+[node name="PlotSelectComponent" type="Node" parent="Player" unique_id=1530576485]
+
+[node name="PlantComponent" type="Node" parent="Player" unique_id=651897507]
+
+[node name="Farm" type="Node" parent="." unique_id=1323305321]
+
+[node name="Soil" type="TileMapLayer" parent="Farm" unique_id=687827692]
+
+[node name="Crops" type="Node2D" parent="Farm" unique_id=720615601]
