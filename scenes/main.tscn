@@ -1,13 +1,22 @@
-[gd_scene format=3 uid="uid://brovn6bd083te"]
+[gd_scene format=4 uid="uid://brovn6bd083te"]
 
 [ext_resource type="Script" uid="uid://oo7iutuif107" path="res://scripts/player/Player.gd" id="1_jyhfs"]
 [ext_resource type="Texture2D" uid="uid://cxmwkvvh2vkvf" path="res://sprites/дед .png" id="2_tbgi4"]
 [ext_resource type="Script" uid="uid://ds247r3kbrh4k" path="res://scripts/player/InputComponent.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://c3ce18u7165f" path="res://scripts/player/MovementComponent.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://d31227tthh0c7" path="res://scripts/farm/PlotSelectComponent.gd" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://dw6xyc4wp2s2q" path="res://sprites/floor1.png" id="6_tefeu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyhfs"]
 radius = 12.0
 height = 34.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o6xl0"]
+texture = ExtResource("6_tefeu")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tbgi4"]
+sources/0 = SubResource("TileSetAtlasSource_o6xl0")
 
 [node name="Main" type="Node2D" unique_id=859579644]
 
@@ -29,12 +38,20 @@ script = ExtResource("3_tbgi4")
 [node name="MovementComponent" type="Node" parent="Player" unique_id=317767482]
 script = ExtResource("4_tefeu")
 
-[node name="PlotSelectComponent" type="Node" parent="Player" unique_id=1530576485]
+[node name="PlotSelectComponent" type="Node" parent="Player" unique_id=1530576485 node_paths=PackedStringArray("soil_layer")]
+script = ExtResource("5_tbgi4")
+soil_layer = NodePath("../../Farm/Soil")
 
 [node name="PlantComponent" type="Node" parent="Player" unique_id=651897507]
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1751704670]
 
 [node name="Farm" type="Node" parent="." unique_id=1323305321]
 
 [node name="Soil" type="TileMapLayer" parent="Farm" unique_id=687827692]
+z_index = -1
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD8//7/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAD+//z/AAAAAAAAAAD9//z/AAAAAAAAAAD8//z/AAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_tbgi4")
 
 [node name="Crops" type="Node2D" parent="Farm" unique_id=720615601]
