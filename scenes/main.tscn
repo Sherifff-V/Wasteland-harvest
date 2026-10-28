@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ds247r3kbrh4k" path="res://scripts/player/InputComponent.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://c3ce18u7165f" path="res://scripts/player/MovementComponent.gd" id="4_tefeu"]
 [ext_resource type="Script" uid="uid://d31227tthh0c7" path="res://scripts/farm/PlotSelectComponent.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://cyyatj7cttkrh" path="res://scripts/inventory/InventoryComponent.gd" id="6_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://dw6xyc4wp2s2q" path="res://sprites/floor1.png" id="6_tefeu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jyhfs"]
@@ -27,6 +28,8 @@ script = ExtResource("1_jyhfs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=81355650]
 shape = SubResource("CapsuleShape2D_jyhfs")
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1751704670]
+
 [node name="Дед" type="Sprite2D" parent="Player" unique_id=588398627]
 texture_filter = 3
 position = Vector2(2.3841858e-07, 2.3841858e-07)
@@ -44,7 +47,8 @@ soil_layer = NodePath("../../Farm/Soil")
 
 [node name="PlantComponent" type="Node" parent="Player" unique_id=651897507]
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1751704670]
+[node name="InventoryComponent" type="Node" parent="Player" unique_id=191120833]
+script = ExtResource("6_o6xl0")
 
 [node name="Farm" type="Node" parent="." unique_id=1323305321]
 

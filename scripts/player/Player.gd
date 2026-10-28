@@ -10,7 +10,8 @@ func _ready() -> void:
 	gameClock.day_passed.connect(onDayPassed);
  
 func onDayPassed(day: int) -> void:
-	print("day passed: %d" %day);
+	#print("day passed: %d" %day);
+	pass
 
 func _physics_process(delta: float) -> void:
 	movement_component.move(self, input_component.move_direction, delta)
