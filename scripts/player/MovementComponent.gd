@@ -7,7 +7,6 @@ extends Node
  
 var _time_since_start: float = 0.5
  
- 
 func move(body: CharacterBody2D, direction: Vector2, delta: float) -> void:
 	var rate := friction if direction == Vector2.ZERO else acceleration
 	var step := rate * delta

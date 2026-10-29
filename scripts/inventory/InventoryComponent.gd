@@ -3,10 +3,12 @@ class_name InventoryComponent extends Node
 signal selected_changed(index: int)
 
 @onready var input: InputComponent = get_parent().get_node("InputComponent")
-@export var size := 5
+@export var size := 2
 
 var inventory: Inventory
 var selected_index := 0   # hotbar selection
+
+
 
 func _ready() -> void:
 	inventory = Inventory.new(size)
