@@ -48,6 +48,8 @@ func in_placeable_distance(tile_pos: Vector2i) -> bool:
 func on_slot_changed(index: int) -> void:
 	if index != 1:
 		preview_layer.clear()
+	print("changed", last_preview_pos)
+	last_preview_pos = Vector2i(-9999, -9999)
 	
 func world_to_cell(global_pos: Vector2) -> Vector2:
 	var cell: Vector2i = soil_layer.local_to_map(soil_layer.to_local(global_pos));

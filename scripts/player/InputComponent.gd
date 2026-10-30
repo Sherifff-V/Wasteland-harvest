@@ -14,26 +14,29 @@ var move_direction := Vector2.ZERO
 var last_hovered_tile: Vector2i = Vector2i(-9999, -9999)
 
 func _unhandled_input(event: InputEvent) -> void:
+	var mouse_pos = get_parent().get_global_mouse_position()
+	var tile_pos: Vector2i = ground_layer.local_to_map(ground_layer.to_local(mouse_pos));
+	
 	if HOTBAR_SIZE > 9: printerr("Hotbar size must be <= 9")
 	
 	for i in HOTBAR_SIZE:
 		if event.is_action_pressed("slot_%d" % (i + 1)):
 			slot_selected.emit(i)
+			
+	if event.is_action_pressed("slot_2"):
+		mouse_hovering.emit(tile_pos)
 	
 	if event.is_action_pressed("debug_checkinventory"):
 		debug_checkinventorysig.emit()
 			
-	var mouse_pos = get_parent().get_global_mouse_position()
-	
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		mouse_right_click.emit(mouse_pos)
 	
 	if event is InputEventMouseMotion:
-		var tile: Vector2i = ground_layer.local_to_map(ground_layer.to_local(mouse_pos));
 		
-		if tile != last_hovered_tile:
-			last_hovered_tile = tile
-			mouse_hovering.emit(tile)
+		if tile_pos != last_hovered_tile:
+			last_hovered_tile = tile_pos
+			mouse_hovering.emit(tile_pos)
 
 
 func _process(_delta: float) -> void:
