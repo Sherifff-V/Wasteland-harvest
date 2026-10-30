@@ -12,6 +12,7 @@ class_name PlotSelectComponent extends Node
 @onready var player: Player = get_parent()
 
 var last_preview_pos: Vector2i = Vector2i(-9999, -9999)
+var selected_cell: Vector2i
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,8 +32,9 @@ func hovering_selection(tile: Vector2i) -> void:
 func select_pos(pos: Vector2) -> void:
 	var grid_pos = world_to_cell(pos);
 	if soil_layer.get_cell_source_id(grid_pos) == -1 and inventory.selected_index == 1 and in_placeable_distance(grid_pos):
-		soil_layer.set_cell(grid_pos, 0, Vector2i(0, 0));
-		print("put a tile %v" % grid_pos)
+		#soil_layer.set_cell(grid_pos, 0, Vector2i(0, 0));
+		selected_cell = grid_pos
+		print("selected a tile %v" % grid_pos)
 
 func in_placeable_distance(tile_pos: Vector2i) -> bool:
 	var player_pos = get_parent().global_position

@@ -8,8 +8,6 @@ signal selected_changed(index: int)
 var inventory: Inventory
 var selected_index := 0   # hotbar selection
 
-
-
 func _ready() -> void:
 	inventory = Inventory.new(size)
 	input.slot_selected.connect(on_slot_selected)
