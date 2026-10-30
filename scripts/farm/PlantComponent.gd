@@ -6,7 +6,8 @@ class_name PlantComponent extends Node
 @export var inventory_comp: InventoryComponent
 
 func _ready() -> void:
-	input.interact_pressed.connect(interact)
+	#input.interact_pressed.connect(interact)
+	pass
 
 func interact() -> void:
 	var cell := selector.selected_cell

@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_pjmvo")
-id = &"plant1"
-display_name = "PLANT"
+id = &"cucumber"
+display_name = "Cucumber"

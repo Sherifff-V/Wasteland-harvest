@@ -4,6 +4,7 @@ extends Node
 signal slot_selected(index: int)
 signal mouse_hovering(pos: Vector2)
 signal mouse_right_click(pos: Vector2)
+signal debug_checkinventorysig()
 
 @export var ground_layer: TileMapLayer
 
@@ -18,6 +19,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	for i in HOTBAR_SIZE:
 		if event.is_action_pressed("slot_%d" % (i + 1)):
 			slot_selected.emit(i)
+	
+	if event.is_action_pressed("debug_checkinventory"):
+		debug_checkinventorysig.emit()
 			
 	var mouse_pos = get_parent().get_global_mouse_position()
 	

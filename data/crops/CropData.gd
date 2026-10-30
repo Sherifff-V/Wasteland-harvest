@@ -3,6 +3,7 @@ class_name CropData extends Resource
 @export var id: StringName
 @export var days_per_stage: int = 1
 @export var stage_textures: Array[Texture2D]
+@export var offset: Vector2 = Vector2(0, 0)
 
 @export_group("Harvest")
 @export var harvest_item: ItemData

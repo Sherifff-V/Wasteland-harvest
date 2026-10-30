@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CropData" format=3 uid="uid://dk5rfmx5cw3dn"]
+
+[ext_resource type="Resource" uid="uid://lls38ho4og1" path="res://data/items/Cucumber.tres" id="1_7aeml"]
+[ext_resource type="Script" uid="uid://ck6ujxww2n4ne" path="res://data/crops/CropData.gd" id="1_m8o2h"]
+[ext_resource type="Texture2D" uid="uid://dh8c3r2e5ycga" path="res://sprites/crops/cucumber_0.png" id="3_l8rma"]
+[ext_resource type="Texture2D" uid="uid://d282ggcb3dnf3" path="res://sprites/crops/cucumber_1.png" id="4_7w83j"]
+[ext_resource type="Texture2D" uid="uid://e18q0wu148yq" path="res://sprites/crops/cucumber_2.png" id="5_7aq52"]
+[ext_resource type="Texture2D" uid="uid://mka4rqx0l0af" path="res://sprites/crops/cucumber_3.png" id="6_0dutk"]
+
+[resource]
+script = ExtResource("1_m8o2h")
+id = &"cucumber_crop"
+stage_textures = Array[Texture2D]([ExtResource("3_l8rma"), ExtResource("4_7w83j"), ExtResource("5_7aq52"), ExtResource("6_0dutk")])
+offset = Vector2(0, -9)
+harvest_item = ExtResource("1_7aeml")
+harvest_amount = 2

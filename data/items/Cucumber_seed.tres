@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="SeedItem" format=3 uid="uid://cjxm30isefoj4"]
 
-[ext_resource type="Resource" uid="uid://dk5rfmx5cw3dn" path="res://data/items/plant1_crop.tres" id="1_8vyil"]
+[ext_resource type="Resource" uid="uid://dk5rfmx5cw3dn" path="res://data/items/Cucumber_crop.tres" id="1_8vyil"]
 [ext_resource type="Script" uid="uid://56lu50j0sxdu" path="res://data/items/SeedItem.gd" id="1_nutcu"]
 
 [resource]
 script = ExtResource("1_nutcu")
 crop = ExtResource("1_8vyil")
-id = &"plant1_seed"
-display_name = "PLANT_SEED"
+id = &"cucumber_seed"
+display_name = "Cucumber Seed"

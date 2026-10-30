@@ -39,6 +39,31 @@ func add(item: ItemData, amount: int = 1) -> int:
 			
 	return amount
 
+## returns how many items did not fit in the given slot
+func add_to_slot(item: ItemData, index: int, amount: int = 1) -> int:
+	var s = slots[index]
+	
+	if slots.size() - 1 < index: printerr("Slot's index out of range")
+	
+	if s.is_empty():
+		var moved := mini(amount, item.max_stack)
+		s.item = item
+		s.amount = moved
+		amount -= moved
+		
+		slot_changed.emit(index)
+		
+		if amount == 0: return 0
+	else:
+		var moved := mini(amount, item.max_stack - s.amount)
+		s.amount += moved
+		amount -= moved
+		
+		slot_changed.emit(index)
+		
+		if amount == 0: return 0
+	return amount
+
 ## returns amount of given item
 func count(item: ItemData) -> int:
 	var total := 0
