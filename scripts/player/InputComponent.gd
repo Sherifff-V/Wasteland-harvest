@@ -7,6 +7,7 @@ signal mouse_right_click(pos: Vector2)
 signal debug_checkinventorysig()
 
 @export var ground_layer: TileMapLayer
+@onready var movement: MovementComponent = get_parent().get_node("MovementComponent")
 
 const HOTBAR_SIZE := 2 
 
@@ -32,8 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
 		mouse_right_click.emit(mouse_pos)
 	
-	if event is InputEventMouseMotion:
-		
+	if event is InputEventMouseMotion or movement.is_moving(get_parent()):
 		if tile_pos != last_hovered_tile:
 			last_hovered_tile = tile_pos
 			mouse_hovering.emit(tile_pos)
