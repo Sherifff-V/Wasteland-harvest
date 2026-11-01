@@ -20,3 +20,6 @@ func move(body: CharacterBody2D, direction: Vector2, delta: float) -> void:
 	var target := direction * speed
 	body.velocity = body.velocity.move_toward(target, step)
 	body.move_and_slide()
+	
+func is_moving(body: CharacterBody2D) -> bool:
+	return body.velocity != Vector2.ZERO

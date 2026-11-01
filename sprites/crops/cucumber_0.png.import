@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw6xyc4wp2s2q"
-path="res://.godot/imported/floor1.png-6bccb1551804e904cafd3ea92032706b.ctex"
+uid="uid://dh8c3r2e5ycga"
+path="res://.godot/imported/cucumber_0.png-ff736a4fc93d097fca848f2fd3d50167.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/floor1.png"
-dest_files=["res://.godot/imported/floor1.png-6bccb1551804e904cafd3ea92032706b.ctex"]
+source_file="res://sprites/crops/cucumber_0.png"
+dest_files=["res://.godot/imported/cucumber_0.png-ff736a4fc93d097fca848f2fd3d50167.ctex"]
 
 [params]
 

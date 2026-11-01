@@ -1,38 +1,53 @@
 class_name PlotSelectComponent extends Node
 
+signal cell_selected(cell: Vector2i)
 
 @export var soil_layer: TileMapLayer 
 @export var preview_layer: TileMapLayer
 @export var selection_range = 5;
+@export var farm: Farm
 
-@onready var inventory: InventoryComponent = get_parent().get_node("InventoryComponent")
+@onready var inventory_comp: InventoryComponent = get_parent().get_node("InventoryComponent")
 @onready var input: InputComponent = get_parent().get_node("InputComponent")
 @onready var usedRect = soil_layer.get_used_rect()
 @onready var grid_origin = usedRect.position
 @onready var player: Player = get_parent()
 
 var last_preview_pos: Vector2i = Vector2i(-9999, -9999)
+var selected_cell: Vector2i
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	input.mouse_right_click.connect(select_pos)
+	input.left_click_pressed.connect(select_pos)
+	input.left_click_interact_pressed.connect(select_nearest)
+	input.interact_pressed.connect(select_nearest)
 	input.mouse_hovering.connect(hovering_selection)
-	inventory.selected_changed.connect(on_slot_changed)
+	inventory_comp.selected_changed.connect(on_slot_changed)
 
 func hovering_selection(tile: Vector2i) -> void:
 	if tile != last_preview_pos:
 		preview_layer.set_cell(last_preview_pos, -1)
 		
-		if soil_layer.get_cell_source_id(tile) == -1 and inventory.selected_index == 1 and in_placeable_distance(tile):
-			preview_layer.set_cell(tile, 0, Vector2i(0, 0))
+		if inventory_comp.selected_index == 1 and in_placeable_distance(tile):
+			if !farm.can_plant(tile):
+				preview_layer.set_cell(tile, 0, Vector2i(0, 0))
+			else:
+				preview_layer.set_cell(tile, 1, Vector2i(0, 0))
 	
 	last_preview_pos = tile
 
 func select_pos(pos: Vector2) -> void:
 	var grid_pos = world_to_cell(pos);
-	if soil_layer.get_cell_source_id(grid_pos) == -1 and inventory.selected_index == 1 and in_placeable_distance(grid_pos):
-		soil_layer.set_cell(grid_pos, 0, Vector2i(0, 0));
-		print("put a tile %v" % grid_pos)
+	if inventory_comp.selected_index == 1 and in_placeable_distance(grid_pos):
+		selected_cell = grid_pos
+		cell_selected.emit(grid_pos)
+
+func select_nearest() -> void:
+	var center := world_to_cell(get_parent().global_position)
+	var cell := farm.nearest_harvestable(center, selection_range)
+	
+	if cell != Farm.NO_CELL:
+		selected_cell = cell
+		cell_selected.emit(cell)
 
 func in_placeable_distance(tile_pos: Vector2i) -> bool:
 	var player_pos = get_parent().global_position
@@ -41,6 +56,8 @@ func in_placeable_distance(tile_pos: Vector2i) -> bool:
 func on_slot_changed(index: int) -> void:
 	if index != 1:
 		preview_layer.clear()
+		
+	last_preview_pos = Vector2i(-9999, -9999)
 	
 func world_to_cell(global_pos: Vector2) -> Vector2:
 	var cell: Vector2i = soil_layer.local_to_map(soil_layer.to_local(global_pos));
