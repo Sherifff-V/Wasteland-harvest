@@ -11,8 +11,9 @@ func _ready() -> void:
 	inventory_comp.inventory.add_to_slot(seed, 1, 5)
  
 func checkInventory() -> void: # debug only
-	var selected_item_name = inventory_comp.get_selected().item.display_name
-	print("selected item name: ", selected_item_name)
+	var selected_item = inventory_comp.get_selected().item
+	if selected_item:
+		print("selected item name: ", selected_item.display_name, ", amount: ", inventory_comp.inventory.count(selected_item))
 	
 
 func _physics_process(delta: float) -> void:

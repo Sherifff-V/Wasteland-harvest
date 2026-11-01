@@ -39,6 +39,16 @@ func add(item: ItemData, amount: int = 1) -> int:
 			
 	return amount
 
+func can_add(item: ItemData, amount: int = 1) -> bool:
+	var space := 0
+	
+	for s in slots:
+		if s.is_empty():
+			space += item.max_stack
+		elif s.item == item:
+			space += item.max_stack - s.amount
+	return space >= amount
+
 ## returns how many items did not fit in the given slot
 func add_to_slot(item: ItemData, index: int, amount: int = 1) -> int:
 	var s = slots[index]

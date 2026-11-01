@@ -3,10 +3,14 @@ extends Node
  
 signal slot_selected(index: int)
 signal mouse_hovering(pos: Vector2)
-signal mouse_right_click(pos: Vector2)
-signal debug_checkinventorysig()
+signal debug_checkinventorysig
+signal left_click_pressed(world_pos: Vector2)
+signal left_click_interact_pressed
+signal interact_pressed
 
 @export var ground_layer: TileMapLayer
+
+@onready var player: Node2D = get_parent()
 @onready var movement: MovementComponent = get_parent().get_node("MovementComponent")
 
 const HOTBAR_SIZE := 2 
@@ -26,12 +30,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 	if event.is_action_pressed("slot_2"):
 		mouse_hovering.emit(tile_pos)
-	
-	if event.is_action_pressed("debug_checkinventory"):
+	elif event.is_action_pressed("debug_checkinventory"):
 		debug_checkinventorysig.emit()
-			
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-		mouse_right_click.emit(mouse_pos)
+	elif event.is_action_pressed("interact"):
+		interact_pressed.emit()
+	
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			left_click_interact_pressed.emit()
+			left_click_pressed.emit(mouse_pos)
 	
 	if event is InputEventMouseMotion or movement.is_moving(get_parent()):
 		if tile_pos != last_hovered_tile:

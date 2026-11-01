@@ -3,10 +3,15 @@
 [ext_resource type="Script" uid="uid://dl0ivtnlrlkdo" path="res://scripts/farm/crop.gd" id="1_fe780"]
 [ext_resource type="Script" uid="uid://dsormrrsv7f2" path="res://scripts/farm/GrowthComponent.gd" id="1_pl0dt"]
 
-[node name="Crop" type="Node2D" unique_id=839489695]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icqri"]
+
+[node name="Crop" type="StaticBody2D" unique_id=1064559341]
 script = ExtResource("1_fe780")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=163941665]
 
 [node name="GrowthComponent" type="Node" parent="." unique_id=954800862]
 script = ExtResource("1_pl0dt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1610551258]
+shape = SubResource("RectangleShape2D_icqri")

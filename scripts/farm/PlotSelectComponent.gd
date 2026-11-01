@@ -1,5 +1,6 @@
 class_name PlotSelectComponent extends Node
 
+signal cell_selected(cell: Vector2i)
 
 @export var soil_layer: TileMapLayer 
 @export var preview_layer: TileMapLayer
@@ -16,7 +17,9 @@ var last_preview_pos: Vector2i = Vector2i(-9999, -9999)
 var selected_cell: Vector2i
 
 func _ready() -> void:
-	input.mouse_right_click.connect(select_pos)
+	input.left_click_pressed.connect(select_pos)
+	input.left_click_interact_pressed.connect(select_nearest)
+	input.interact_pressed.connect(select_nearest)
 	input.mouse_hovering.connect(hovering_selection)
 	inventory_comp.selected_changed.connect(on_slot_changed)
 
@@ -25,7 +28,7 @@ func hovering_selection(tile: Vector2i) -> void:
 		preview_layer.set_cell(last_preview_pos, -1)
 		
 		if inventory_comp.selected_index == 1 and in_placeable_distance(tile):
-			if soil_layer.get_cell_source_id(tile) == -1:
+			if !farm.can_plant(tile):
 				preview_layer.set_cell(tile, 0, Vector2i(0, 0))
 			else:
 				preview_layer.set_cell(tile, 1, Vector2i(0, 0))
@@ -36,10 +39,15 @@ func select_pos(pos: Vector2) -> void:
 	var grid_pos = world_to_cell(pos);
 	if inventory_comp.selected_index == 1 and in_placeable_distance(grid_pos):
 		selected_cell = grid_pos
-		
-		var item := inventory_comp.get_selected().item # add check for seed item later
-		if item != null and farm.plant(grid_pos, item.crop):
-			inventory_comp.inventory.remove(item, 1)
+		cell_selected.emit(grid_pos)
+
+func select_nearest() -> void:
+	var center := world_to_cell(get_parent().global_position)
+	var cell := farm.nearest_harvestable(center, selection_range)
+	
+	if cell != Farm.NO_CELL:
+		selected_cell = cell
+		cell_selected.emit(cell)
 
 func in_placeable_distance(tile_pos: Vector2i) -> bool:
 	var player_pos = get_parent().global_position
@@ -48,7 +56,7 @@ func in_placeable_distance(tile_pos: Vector2i) -> bool:
 func on_slot_changed(index: int) -> void:
 	if index != 1:
 		preview_layer.clear()
-	print("changed", last_preview_pos)
+		
 	last_preview_pos = Vector2i(-9999, -9999)
 	
 func world_to_cell(global_pos: Vector2) -> Vector2:
