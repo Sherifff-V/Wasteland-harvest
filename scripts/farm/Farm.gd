@@ -11,7 +11,7 @@ func has_crop(cell: Vector2i) -> bool:
 	return crops.has(cell)
 
 func can_plant(cell: Vector2i) -> bool:
-	return soil.get_cell_atlas_coords(cell) == Vector2i(1,0) and not crops.has(cell)
+	return soil.get_cell_atlas_coords(cell) == Vector2i(1,1) and not crops.has(cell)
 
 func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	if not can_plant(cell):
