@@ -3,8 +3,8 @@ extends Node
 signal time_changed(time_of_day: float)
 signal day_passed(day: int)
 
-const DAY_LENGTH := 1.0; # in seconds
-const NIGHT_LENGTH := 2.0; # in seconds
+const DAY_LENGTH := 5.0; # in seconds
+const NIGHT_LENGTH := 5.0; # in seconds
 
 var day_count := 1;
 var time_length = DAY_LENGTH + NIGHT_LENGTH;
@@ -27,4 +27,7 @@ func get_hour() -> float:
 	
 func is_night() -> bool:
 	return global_time > DAY_LENGTH;
+	
+func is_day() -> bool:
+	return !is_night()
 	
