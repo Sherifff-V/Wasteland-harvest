@@ -89,6 +89,9 @@ texture_region_size = Vector2i(18, 18)
 tile_size = Vector2i(18, 18)
 sources/0 = SubResource("TileSetAtlasSource_yc10j")
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y2l6j"]
+light_mode = 1
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_muem4"]
 texture = ExtResource("4_trceg")
 texture_region_size = Vector2i(18, 19)
@@ -130,6 +133,7 @@ tile_set = SubResource("TileSet_tbgi4")
 [node name="SelectionPreview" type="TileMapLayer" parent="World" unique_id=528742104]
 z_index = 1
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_y2l6j")
 tile_set = SubResource("TileSet_o6xl0")
 
 [node name="Entities" type="Node2D" parent="World" unique_id=1470660227]
@@ -213,3 +217,5 @@ theme_override_font_sizes/font_size = 32
 text = "Harvest(F/m1)"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]
