@@ -35,8 +35,6 @@ func checkInventory() -> void:
 func _physics_process(delta: float) -> void:
 	movement_component.move(self, input_component.move_direction, delta)
 	
-	look_at(get_global_mouse_position())
-	
 	if input_component.is_shooting() and current_weapon != null:
 		var current_time = Time.get_ticks_msec() / 1000.0
 		if current_time - last_fire_time >= current_weapon.fire_rate:
