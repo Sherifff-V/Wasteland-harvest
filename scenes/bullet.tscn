@@ -6,10 +6,9 @@
 radius = 5.0
 
 [node name="Bullet" type="Area2D" unique_id=519252173]
+modulate = Color(1, 1, 0, 1)
+self_modulate = Color(1, 1, 0, 1)
 script = ExtResource("1_mkf8s")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1059921504]
-modulate = Color(0.86355567, 0.84989864, 3.85046e-07, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=320872904]
 shape = SubResource("CircleShape2D_xrivr")
