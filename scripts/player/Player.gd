@@ -8,9 +8,10 @@ class_name Player extends CharacterBody2D
 
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
-	inventory_comp.inventory.add_to_slot(seed, 1, 5)
  
 func checkInventory() -> void: # debug only
+	inventory_comp.inventory.add_to_slot(seed, 1, 5)
+	
 	var selected_item = inventory_comp.get_selected().item
 	if selected_item:
 		print("selected item name: ", selected_item.display_name, ", amount: ", inventory_comp.inventory.count(selected_item))

@@ -18,9 +18,12 @@
 [ext_resource type="Resource" uid="uid://cjxm30isefoj4" path="res://data/items/Cucumber_seed.tres" id="7_eb6dy"]
 [ext_resource type="Script" uid="uid://c74kh7x36oxw6" path="res://scripts/farm/PlantComponent.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://cxd8ibgsxd4o5" path="res://scripts/farm/Farm.gd" id="13_a8y0u"]
-[ext_resource type="Script" uid="uid://dhg486wxkevyl" path="res://scripts/farm/UIComponent.gd" id="14_jbj1t"]
+[ext_resource type="Script" uid="uid://dhg486wxkevyl" path="res://scripts/ui/UIComponent.gd" id="14_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dq0ygdxje4js5" path="res://scenes/crop.tscn" id="14_jkv2x"]
 [ext_resource type="Script" uid="uid://ckevbdcpdemh3" path="res://scripts/ui/HarvestPrompt.gd" id="17_muem4"]
+[ext_resource type="Texture2D" uid="uid://c5i44jda07h2l" path="res://sprites/inv_slot_placeholder.png" id="22_jscy8"]
+[ext_resource type="Script" uid="uid://cib5n2o2gffi4" path="res://scripts/ui/InventorySlot_UI.gd" id="23_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://k1g67n3qc1kb" path="res://sprites/inv_slot_selected_placeholder.png" id="24_y6deb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
 texture = ExtResource("1_choun")
@@ -110,10 +113,13 @@ sources/0 = SubResource("TileSetAtlasSource_muem4")
 sources/1 = SubResource("TileSetAtlasSource_eb6dy")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
-size = Vector2(18, 7)
+size = Vector2(18, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icqri"]
 bg_color = Color(0, 0, 0, 0.15686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atnei"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Main" type="Node" unique_id=1139472212]
 
@@ -142,11 +148,12 @@ y_sort_enabled = true
 [node name="Player" type="CharacterBody2D" parent="World/Entities" unique_id=336309734]
 z_index = 2
 position = Vector2(19, 20)
+motion_mode = 1
 script = ExtResource("1_jyhfs")
 seed = ExtResource("7_eb6dy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Entities/Player" unique_id=81355650]
-position = Vector2(0, 12.5)
+position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_muem4")
 
 [node name="Camera2D" type="Camera2D" parent="World/Entities/Player" unique_id=1751704670]
@@ -178,23 +185,25 @@ selector = NodePath("../PlotSelectComponent")
 farm = NodePath("../../../../Systems/Farm")
 inventory_comp = NodePath("../InventoryComponent")
 
-[node name="InventoryComponent" type="Node" parent="World/Entities/Player" unique_id=191120833]
+[node name="InventoryComponent" type="Node" parent="World/Entities/Player" unique_id=191120833 groups=["player_inventory"]]
 script = ExtResource("6_o6xl0")
 
-[node name="UIComponent" type="Node" parent="World/Entities/Player" unique_id=142195541 node_paths=PackedStringArray("farm", "selector")]
+[node name="UIComponent" type="Node" parent="World/Entities/Player" unique_id=142195541 node_paths=PackedStringArray("farm", "selector", "inv_comp")]
 script = ExtResource("14_jbj1t")
 farm = NodePath("../../../../Systems/Farm")
 selector = NodePath("../PlotSelectComponent")
+inv_comp = NodePath("../InventoryComponent")
 
 [node name="Crops" type="Node2D" parent="World/Entities" unique_id=720615601]
 
 [node name="Systems" type="Node" parent="." unique_id=442766632]
 
-[node name="Farm" type="Node" parent="Systems" unique_id=1323305321 node_paths=PackedStringArray("soil", "crops_root")]
+[node name="Farm" type="Node" parent="Systems" unique_id=1323305321 node_paths=PackedStringArray("soil", "crops_root", "player")]
 script = ExtResource("13_a8y0u")
 soil = NodePath("../../World/Soil")
 crops_root = NodePath("../../World/Entities/Crops")
 crop_scene = ExtResource("14_jkv2x")
+player = NodePath("../../World/Entities/Player")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=685938803]
 
@@ -217,5 +226,104 @@ theme_override_font_sizes/font_size = 32
 text = "Harvest(F/m1)"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="InventoryContainer" type="PanelContainer" parent="UI" unique_id=1796511105]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -108.0
+offset_right = 364.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_atnei")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryContainer" unique_id=1570095741]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryContainer/MarginContainer" unique_id=455147719]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Slot1" type="TextureRect" parent="UI/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1924472841]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("22_jscy8")
+stretch_mode = 4
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_jscy8")
+selected_texture = ExtResource("24_y6deb")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1874612255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1152684648]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Slot2" type="TextureRect" parent="UI/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1439740841]
+texture_filter = 1
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("22_jscy8")
+stretch_mode = 4
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_jscy8")
+selected_texture = ExtResource("24_y6deb")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot2" unique_id=258121787]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1135326917]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]

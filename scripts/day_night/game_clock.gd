@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 			light_modifier = current_scene.find_child("Ambient", true, false) as CanvasModulate
 
 	var time_percent: float = global_time / time_length
-	print("time: ", global_time, "percent: ", time_percent)
+	
 	if environment_gradient and light_modifier:
 		light_modifier.color = environment_gradient.sample(time_percent)
 	

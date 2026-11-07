@@ -62,7 +62,7 @@ func add_to_slot(item: ItemData, index: int, amount: int = 1) -> int:
 		amount -= moved
 		
 		slot_changed.emit(index)
-		
+		print("added 5 cucumbers")
 		if amount == 0: return 0
 	else:
 		var moved := mini(amount, item.max_stack - s.amount)
