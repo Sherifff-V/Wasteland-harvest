@@ -33,8 +33,10 @@ func set_item(index: int) -> void:
 func on_selected_changed(index: int) -> void:
 	if name == "Slot" + str(index + 1):
 		texture = selected_texture
+		custom_minimum_size = Vector2(18*4, 18*4)
 	else:
 		texture = normal_texture
+		custom_minimum_size = Vector2(16*4, 16*4)
 
 func clear_slot() -> void:
 	label.text = ""

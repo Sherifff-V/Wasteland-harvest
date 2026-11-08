@@ -21,9 +21,9 @@
 [ext_resource type="Script" uid="uid://dhg486wxkevyl" path="res://scripts/ui/UIComponent.gd" id="14_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dq0ygdxje4js5" path="res://scenes/crop.tscn" id="14_jkv2x"]
 [ext_resource type="Script" uid="uid://ckevbdcpdemh3" path="res://scripts/ui/HarvestPrompt.gd" id="17_muem4"]
-[ext_resource type="Texture2D" uid="uid://c5i44jda07h2l" path="res://sprites/inv_slot_placeholder.png" id="22_jscy8"]
+[ext_resource type="Texture2D" uid="uid://c1s0o2484c6cj" path="res://sprites/slot_inactive.png" id="22_y6deb"]
 [ext_resource type="Script" uid="uid://cib5n2o2gffi4" path="res://scripts/ui/InventorySlot_UI.gd" id="23_pm3ni"]
-[ext_resource type="Texture2D" uid="uid://k1g67n3qc1kb" path="res://sprites/inv_slot_selected_placeholder.png" id="24_y6deb"]
+[ext_resource type="Texture2D" uid="uid://bpsl2xywmu2d5" path="res://sprites/slot_active.png" id="24_og1vs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
 texture = ExtResource("1_choun")
@@ -127,13 +127,13 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Ground" type="TileMapLayer" parent="World" unique_id=260109515]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAP//AQAAAAAAAAABAP//AAAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAAAAAAAAAAD//wAAAQAAAAAAAAACAP//AQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAAAAAAAAAAD8//z/BAAAAAEAAAD8//3/BAAAAAEAAAD8//7/BAAAAAEAAAD8////BAAAAAEAAAD8/wAABAAAAAEAAAD9/wAAAAAAAAAAAAD8/wEABAAAAAEAAAD8/wIABAAAAAEAAAD9//z/AQAAAAAAAAD+//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/BAACAAEAAAAFAP3/BAABAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAEAP//AQAAAAAAAAADAP//AQAAAAAAAAD/////AQAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP3/BAABAAAAAAADAP3/BQAAAAEAAAACAP3/AQAAAAAAAAABAP3/AQAAAAAAAAAAAP3/AQAAAAAAAAD///3/AQAAAAAAAAD+//3/AQAAAAAAAAD9//3/AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wEAAQAAAAAAAAD8/wMABAAAAAEAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAMAAAAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAP//BQAAAAAAAAAHAP//BAABAAIAAAAIAP//BAABAAIAAAAIAAMABAABAAAAAAAIAAQABAABAAIAAAAHAAQABAABAAIAAAAGAAQABAABAAIAAAAFAAQABAABAAIAAAAEAAQABAABAAIAAAADAAQABAABAAIAAAACAAQABAABAAIAAAABAAQABAABAAIAAAAAAAQABAABAAIAAAD//wQABAABAAIAAAD+/wQABAABAAIAAAD9/wQABAABAAIAAAD8/wQABAAAAAIAAAAGAP7/AQAAAAAAAAAHAP7/AQAAAAAAAAAIAP7/AQAAAAAAAAAJAP//BQABAAAAAAAJAAAABAAAAAEAAAAJAAEABAAAAAEAAAAJAAIABAAAAAEAAAAJAAMABQABAAEAAAAJAAQABAABAAIAAAAKAAQABAACAAIAAAAKAAMABAACAAEAAAAKAAIABAACAAEAAAAKAAEABAACAAEAAAAKAAAABAACAAEAAAAKAP//BAACAAEAAAAJAP7/AAAAAAAAAAAKAP7/BAACAAEAAAAGAAAABAACAAEAAAAGAAEABAACAAEAAAAGAAIABAACAAEAAAAGAAMABQAAAAEAAAAHAAMABAABAAAAAAAKAP3/AwAAAAAAAAAJAP3/BAABAAAAAAAIAP3/BAABAAAAAAAHAP3/BAABAAAAAAAGAP3/BAABAAAAAAADAPv/BAACAAEAAAADAPr/BAACAAEAAAADAPn/AwAAAAAAAAACAPn/BAABAAAAAAABAPn/BAABAAAAAAAAAPn/BAABAAAAAAD///n/BAABAAAAAAD+//n/BAABAAAAAAD9//n/BAABAAAAAAD8//n/BAAAAAAAAAD8//r/BAAAAAEAAAD8//v/BAAAAAEAAAACAPv/BAABAAEAAAABAPv/BAABAAEAAAAAAPv/BAABAAEAAAD///v/BAABAAEAAAD+//v/BAABAAEAAAD9//v/BAABAAEAAAD9//r/BAABAAEAAAD+//r/BAABAAEAAAD///r/BAABAAEAAAAAAPr/BAABAAEAAAABAPr/BAABAAEAAAACAPr/BAABAAEAAAAKAPz/BQABAAAAAAAJAPz/BAAAAAIAAAAJAPv/BAAAAAEAAAAJAPr/BQABAAAAAAAIAPr/BAABAAIAAAAHAPr/BAABAAIAAAAGAPr/BAAAAAIAAAAGAPn/BQABAAAAAAAFAPn/BAABAAIAAAAEAPn/BAABAAIAAAAHAPn/BAABAAEAAAAIAPn/BAABAAEAAAAJAPn/BAABAAEAAAAKAPn/BAABAAEAAAAKAPr/BAABAAEAAAAKAPv/BAABAAEAAAA=")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAP//AQAAAAAAAAABAP//AAAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAAAAAAAAAAD//wAAAQAAAAAAAAACAP//AQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAAAAAAAAAAD8//z/BAAAAAEAAAD8//3/BAAAAAEAAAD8//7/BAAAAAEAAAD8////BAAAAAEAAAD8/wAABAAAAAEAAAD9/wAAAAAAAAAAAAD8/wEABAAAAAEAAAD8/wIABAAAAAEAAAD9//z/AQAAAAAAAAD+//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/BAACAAEAAAAFAP3/BAABAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAEAP//AQAAAAAAAAADAP//AQAAAAAAAAD/////AQAAAAAAAAD+////AAAAAAAAAAD9////AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AQAAAAAAAAADAP7/AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP3/BAABAAAAAAADAP3/BQAAAAEAAAACAP3/AQAAAAAAAAABAP3/AQAAAAAAAAAAAP3/AQAAAAAAAAD///3/AQAAAAAAAAD+//3/AQAAAAAAAAD9//3/AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD9/wIAAQAAAAAAAAD9/wEAAQAAAAAAAAD8/wMABAAAAAEAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAMAAAAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAP//BQAAAAAAAAAHAP//BAABAAIAAAAIAP//BAABAAIAAAAIAAMABAABAAAAAAAIAAQABAABAAIAAAAHAAQABAABAAIAAAAGAAQABAABAAIAAAAFAAQABAABAAIAAAAEAAQABAABAAIAAAADAAQABAABAAIAAAACAAQABAABAAIAAAABAAQABAABAAIAAAAAAAQABAABAAIAAAD//wQABAABAAIAAAD+/wQABAABAAIAAAD9/wQABAABAAIAAAD8/wQABAAAAAIAAAAGAP7/AQAAAAAAAAAHAP7/AQAAAAAAAAAIAP7/AQAAAAAAAAAJAP//BQABAAAAAAAJAAAABAAAAAEAAAAJAAQABQABAAAAAAAKAP//BAACAAEAAAAJAP7/AAAAAAAAAAAKAP7/BAACAAEAAAAGAAAABAACAAEAAAAGAAEABAACAAEAAAAGAAIABAACAAEAAAAGAAMABQAAAAEAAAAHAAMABAABAAAAAAAKAP3/AwAAAAAAAAAJAP3/BAABAAAAAAAIAP3/BAABAAAAAAAHAP3/BAABAAAAAAAGAP3/BAABAAAAAAADAPv/BAACAAEAAAADAPr/BAACAAEAAAADAPn/AwAAAAAAAAACAPn/BAABAAAAAAABAPn/BAABAAAAAAAAAPn/BAABAAAAAAD///n/BAABAAAAAAD+//n/BAABAAAAAAD9//n/BAABAAAAAAD8//n/BAAAAAAAAAD8//r/BAAAAAEAAAD8//v/BAAAAAEAAAACAPv/BAABAAEAAAABAPv/BAABAAEAAAAAAPv/BAABAAEAAAD///v/BAABAAEAAAD+//v/BAABAAEAAAD9//v/BAABAAEAAAD9//r/BAABAAEAAAD+//r/BAABAAEAAAD///r/BAABAAEAAAAAAPr/BAABAAEAAAABAPr/BAABAAEAAAACAPr/BAABAAEAAAAKAPz/BQABAAAAAAAJAPz/BAAAAAIAAAAJAPv/BAAAAAEAAAAJAPr/BQABAAAAAAAIAPr/BAABAAIAAAAHAPr/BAABAAIAAAAGAPr/BAAAAAIAAAAGAPn/BQABAAAAAAAFAPn/BAABAAIAAAAEAPn/BAABAAIAAAAHAPn/BAABAAEAAAAIAPn/BAABAAEAAAAJAPn/BAABAAEAAAAKAPn/BAABAAEAAAAKAPr/BAABAAEAAAAKAPv/BAABAAEAAAAJAAEABAAAAAIAAAAKAAEABAABAAIAAAAKAAAABQAAAAEAAAAJAAMABAABAAAAAAAKAAMABAACAAAAAAALAAMABAAAAAEAAAALAAEABQABAAAAAAALAAIABAAAAAEAAAALAAQABQABAAEAAAAKAAQABQAAAAEAAAA=")
 tile_set = SubResource("TileSet_tipki")
 
 [node name="Soil" type="TileMapLayer" parent="World" unique_id=687827692]
 z_index = -1
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAHAAAAAAABAAEAAAAHAAEAAAABAAEAAAAHAAIAAAABAAEAAAAIAAIAAAABAAEAAAAIAAEAAAABAAEAAAAIAAAAAAABAAEAAAAIAP//AAABAAAAAAAHAP//AAABAAAAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAMAAAAAAAIAAAAHAAMAAAABAAIAAAAIAAMAAAABAAIAAAAJAAMAAAACAAIAAAAJAAIAAAACAAEAAAAJAAEAAAACAAEAAAAJAAAAAAACAAEAAAAJAP//AAACAAAAAAAGAP//AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAHAAAAAAABAAEAAAAHAAEAAAABAAEAAAAHAAIAAAABAAEAAAAIAAIAAAABAAEAAAAIAAEAAAABAAEAAAAIAAAAAAABAAEAAAAIAP//AAABAAAAAAAHAP//AAABAAAAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAEAAAAGAAIAAAAAAAEAAAAGAAMAAAAAAAIAAAAHAAMAAAABAAIAAAAIAAMAAAABAAIAAAAJAAMAAAACAAIAAAAJAAIAAAABAAEAAAAJAAEAAAACAAEAAAAJAAAAAAACAAEAAAAJAP//AAACAAAAAAAGAP//AAAAAAAAAAAKAAIAAAABAAEAAAAKAAEAAAABAAAAAAA=")
 tile_set = SubResource("TileSet_tbgi4")
 
 [node name="SelectionPreview" type="TileMapLayer" parent="World" unique_id=528742104]
@@ -228,37 +228,40 @@ horizontal_alignment = 1
 uppercase = true
 
 [node name="InventoryContainer" type="PanelContainer" parent="UI" unique_id=1796511105]
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -176.0
-offset_top = -108.0
-offset_right = 364.0
-offset_bottom = -48.0
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = 212.0
+offset_right = 270.0
+offset_bottom = 284.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_atnei")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryContainer" unique_id=1570095741]
+[node name="CenterContainer" type="CenterContainer" parent="UI/InventoryContainer" unique_id=223625039]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryContainer/MarginContainer" unique_id=455147719]
+[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryContainer/CenterContainer" unique_id=1570095741]
 layout_mode = 2
-theme_override_constants/separation = 0
 
-[node name="Slot1" type="TextureRect" parent="UI/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1924472841]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryContainer/CenterContainer/MarginContainer" unique_id=455147719]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Slot1" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1924472841]
 texture_filter = 1
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("22_jscy8")
-stretch_mode = 4
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
 script = ExtResource("23_pm3ni")
-normal_texture = ExtResource("22_jscy8")
-selected_texture = ExtResource("24_y6deb")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
 
-[node name="Label" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1874612255]
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1874612255]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -269,11 +272,12 @@ offset_right = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 9
 autowrap_mode = 2
 clip_text = true
 
-[node name="Count" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1152684648]
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1152684648]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -281,23 +285,40 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -40.0
-offset_top = -23.0
+offset_top = -19.0
+offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Slot2" type="TextureRect" parent="UI/InventoryContainer/MarginContainer/HBoxContainer" unique_id=1439740841]
-texture_filter = 1
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("22_jscy8")
-stretch_mode = 4
-script = ExtResource("23_pm3ni")
-normal_texture = ExtResource("22_jscy8")
-selected_texture = ExtResource("24_y6deb")
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1464931423]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
 
-[node name="Label" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot2" unique_id=258121787]
+[node name="Slot2" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1656237616]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=947415334]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -308,11 +329,12 @@ offset_right = -3.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 9
 autowrap_mode = 2
 clip_text = true
 
-[node name="Count" type="Label" parent="UI/InventoryContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1135326917]
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=53644536]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -320,10 +342,27 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -40.0
-offset_top = -23.0
+offset_top = -19.0
+offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=898832065]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "2"
+horizontal_alignment = 2
 
 [node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]
