@@ -23,5 +23,5 @@ func interact(cell: Vector2i) -> void:
 			inv.add(crop.harvest_item, crop.harvest_amount)
 	else:
 		var item := inventory_comp.get_selected().item # add check for seed item later
-		if item != null and farm.plant(cell, item.crop):
+		if item != null and item.id == "cucumber_seed" and farm.plant(cell, item.crop):
 			inventory_comp.inventory.remove(item, 1)

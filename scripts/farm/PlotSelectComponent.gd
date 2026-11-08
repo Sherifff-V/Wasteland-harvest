@@ -18,7 +18,6 @@ var selected_cell: Vector2i
 
 func _ready() -> void:
 	input.left_click_pressed.connect(select_pos)
-	input.left_click_interact_pressed.connect(select_nearest)
 	input.interact_pressed.connect(select_nearest)
 	input.mouse_hovering.connect(hovering_selection)
 	inventory_comp.selected_changed.connect(on_slot_changed)
@@ -27,7 +26,9 @@ func hovering_selection(tile: Vector2i) -> void:
 	if tile != last_preview_pos:
 		preview_layer.set_cell(last_preview_pos, -1)
 		
-		if inventory_comp.selected_index == 1 and in_placeable_distance(tile):
+		var item = inventory_comp.get_selected().item
+		
+		if item != null and item.id == "cucumber_seed" and in_placeable_distance(tile):
 			if !farm.can_plant(tile):
 				preview_layer.set_cell(tile, 0, Vector2i(0, 0))
 			else:
@@ -37,14 +38,16 @@ func hovering_selection(tile: Vector2i) -> void:
 
 func select_pos(pos: Vector2) -> void:
 	var grid_pos = world_to_cell(pos);
-	if inventory_comp.selected_index == 1 and in_placeable_distance(grid_pos):
+	var item = inventory_comp.get_selected().item
+	
+	if item != null and item.id == "cucumber_seed" and in_placeable_distance(grid_pos):
 		selected_cell = grid_pos
 		cell_selected.emit(grid_pos)
 
 func select_nearest() -> void:
 	var center := world_to_cell(get_parent().global_position)
 	var cell := farm.nearest_harvestable(center, selection_range)
-	
+	print("selected nearest plant")
 	if cell != Farm.NO_CELL:
 		selected_cell = cell
 		cell_selected.emit(cell)
@@ -54,8 +57,7 @@ func in_placeable_distance(tile_pos: Vector2i) -> bool:
 	return tile_pos.distance_to(world_to_cell(player_pos)) <= selection_range
 
 func on_slot_changed(index: int) -> void:
-	if index != 1:
-		preview_layer.clear()
+	preview_layer.clear()
 		
 	last_preview_pos = Vector2i(-9999, -9999)
 	

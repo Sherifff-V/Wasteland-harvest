@@ -25,7 +25,7 @@ func check_player_collision(cell: Vector2i) -> bool:
 	return not cell_rect.intersects(player_rect)
 
 func can_plant(cell: Vector2i) -> bool:
-	return soil.get_cell_atlas_coords(cell) == Vector2i(1,1) and not crops.has(cell) and check_player_collision(cell)
+	return soil.get_cell_atlas_coords(cell) == Vector2i(1,1) and soil.get_cell_source_id(cell) == 1 and not crops.has(cell) and check_player_collision(cell)
 
 func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	if not can_plant(cell):

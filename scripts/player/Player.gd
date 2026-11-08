@@ -10,7 +10,7 @@ func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
  
 func checkInventory() -> void: # debug only
-	inventory_comp.inventory.add_to_slot(seed, 1, 5)
+	inventory_comp.inventory.add(seed, 5)
 	
 	var selected_item = inventory_comp.get_selected().item
 	if selected_item:
