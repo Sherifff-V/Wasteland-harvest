@@ -30,7 +30,7 @@ func hovering_selection(tile: Vector2i) -> void:
 		
 		if item != null and in_placeable_distance(tile):
 			if item.id == "hoe":
-				if !(soil_layer.get_cell_source_id(tile) == 1 and soil_layer.get_cell_atlas_coords(tile) == Vector2i(1, 1)):
+				if soil_layer.get_cell_source_id(tile) == 1:
 					preview_layer.set_cell(tile, 0, Vector2i(0, 0))
 				else:
 					preview_layer.set_cell(tile, 1, Vector2i(0, 0))

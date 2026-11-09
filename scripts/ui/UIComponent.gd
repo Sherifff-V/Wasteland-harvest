@@ -11,7 +11,6 @@ signal harvestable_nearby_changed(is_near: bool)
 var _was_near := false
 
 func _ready() -> void:
-	#inv_comp.on_slot_selected()
 	pass
 
 func _process(_delta: float) -> void:

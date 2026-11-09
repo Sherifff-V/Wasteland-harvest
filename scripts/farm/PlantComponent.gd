@@ -24,9 +24,9 @@ func interact(cell: Vector2i, item: ItemData) -> void:
 				inv.add(crop.harvest_item, crop.harvest_amount)
 	
 	elif item.id == "hoe":
-		if not farm.has_crop(cell):
-			farm.put_tilled_dirt(cell)
+		if not farm.can_plant(cell):
+			farm.dig_dirt(cell)
 	
 	else:
-			if item != null and item.id == "cucumber_seed" and farm.plant(cell, item.crop):
-				inventory_comp.inventory.remove(item, 1)
+		if item != null and item.id == "cucumber_seed" and farm.plant(cell, item.crop):
+			inventory_comp.inventory.remove(item, 1)

@@ -1,22 +1,45 @@
 class_name Farm extends Node
 
 @export var soil: TileMapLayer
+@export var ground: TileMapLayer
 @export var crops_root: Node2D
 @export var crop_scene: PackedScene
 @export var player: Player
 
 var crops: Dictionary = {}   # Vector2i -> Crop
+
 const NO_CELL := Vector2i(999999, 999999)
+const TERRAIN_SET = 0
+const GRASS_TERRAIN = 0
 
 func has_crop(cell: Vector2i) -> bool:
 	return crops.has(cell)
 	
 # returns true if successful
-func put_tilled_dirt(cell: Vector2i) -> bool:
-	if soil.get_cell_source_id(cell) != 3 and soil.get_cell_source_id(cell) == 1 and soil.get_cell_atlas_coords(cell) == Vector2i(1, 1):
-		soil.set_cell(cell, 3, Vector2i(0, 0))
-		return true
-	return false
+func dig_dirt(cell: Vector2i) -> bool:
+	var cells_to_dig: Array[Vector2i] = []
+
+	cells_to_dig.append(cell)
+
+	if cells_to_dig.is_empty():
+		return false
+
+	soil.set_cell(cell, 1, Vector2i(0, 0))
+
+	for offset in [
+		Vector2i(-1, -1), Vector2i(0, -1), Vector2i(1, -1),
+		Vector2i(-1,  0),                  Vector2i(1,  0),
+		Vector2i(-1,  1), Vector2i(0,  1), Vector2i(1,  1)
+	]:
+		var neighbor_cell = cell + offset
+		if soil.get_cell_source_id(neighbor_cell) == -1:
+			soil.set_cell(neighbor_cell, 2, Vector2i(0, 0))
+
+	# 3. Erase the 3x3 grass cells AND automatically update all surrounding terrain borders
+	# Passing -1 as the terrain ID erases the cells and recalculates neighbors properly
+	ground.set_cells_terrain_connect(cells_to_dig, TERRAIN_SET, -1, false)
+
+	return true
 
 func check_player_collision(cell: Vector2i) -> bool:
 	#player rect
@@ -32,7 +55,7 @@ func check_player_collision(cell: Vector2i) -> bool:
 	return not cell_rect.intersects(player_rect)
 
 func can_plant(cell: Vector2i) -> bool:
-	return soil.get_cell_source_id(cell) == 3 and not crops.has(cell) and check_player_collision(cell)
+	return soil.get_cell_source_id(cell) == 1 and not crops.has(cell) and check_player_collision(cell)
 
 func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	if not can_plant(cell):
