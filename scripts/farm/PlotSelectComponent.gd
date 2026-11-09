@@ -28,11 +28,17 @@ func hovering_selection(tile: Vector2i) -> void:
 		
 		var item = inventory_comp.get_selected().item
 		
-		if item != null and item.id == "cucumber_seed" and in_placeable_distance(tile):
-			if !farm.can_plant(tile):
-				preview_layer.set_cell(tile, 0, Vector2i(0, 0))
-			else:
-				preview_layer.set_cell(tile, 1, Vector2i(0, 0))
+		if item != null and in_placeable_distance(tile):
+			if item.id == "hoe":
+				if !(soil_layer.get_cell_source_id(tile) == 1 and soil_layer.get_cell_atlas_coords(tile) == Vector2i(1, 1)):
+					preview_layer.set_cell(tile, 0, Vector2i(0, 0))
+				else:
+					preview_layer.set_cell(tile, 1, Vector2i(0, 0))
+			elif item.id == "cucumber_seed":
+				if !farm.can_plant(tile):
+					preview_layer.set_cell(tile, 0, Vector2i(0, 0))
+				else:
+					preview_layer.set_cell(tile, 1, Vector2i(0, 0))
 	
 	last_preview_pos = tile
 
@@ -40,17 +46,17 @@ func select_pos(pos: Vector2) -> void:
 	var grid_pos = world_to_cell(pos);
 	var item = inventory_comp.get_selected().item
 	
-	if item != null and item.id == "cucumber_seed" and in_placeable_distance(grid_pos):
+	if item != null and in_placeable_distance(grid_pos):
 		selected_cell = grid_pos
-		cell_selected.emit(grid_pos)
+		cell_selected.emit(grid_pos, item)
 
 func select_nearest() -> void:
 	var center := world_to_cell(get_parent().global_position)
 	var cell := farm.nearest_harvestable(center, selection_range)
-	print("selected nearest plant")
+	
 	if cell != Farm.NO_CELL:
 		selected_cell = cell
-		cell_selected.emit(cell)
+		cell_selected.emit(cell, null)
 
 func in_placeable_distance(tile_pos: Vector2i) -> bool:
 	var player_pos = get_parent().global_position

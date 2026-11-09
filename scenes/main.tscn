@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://cxd8ibgsxd4o5" path="res://scripts/farm/Farm.gd" id="13_a8y0u"]
 [ext_resource type="Script" uid="uid://dhg486wxkevyl" path="res://scripts/ui/UIComponent.gd" id="14_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dq0ygdxje4js5" path="res://scenes/crop.tscn" id="14_jkv2x"]
+[ext_resource type="Resource" uid="uid://ct4sh0w1cmus5" path="res://data/items/Hoe.tres" id="14_vxglm"]
 [ext_resource type="Script" uid="uid://ckevbdcpdemh3" path="res://scripts/ui/HarvestPrompt.gd" id="17_muem4"]
 [ext_resource type="Texture2D" uid="uid://c1s0o2484c6cj" path="res://sprites/slot_inactive.png" id="22_y6deb"]
 [ext_resource type="Script" uid="uid://cib5n2o2gffi4" path="res://scripts/ui/InventorySlot_UI.gd" id="23_pm3ni"]
@@ -168,6 +169,7 @@ position = Vector2(19, 20)
 motion_mode = 1
 script = ExtResource("1_jyhfs")
 seed = ExtResource("7_eb6dy")
+hoe = ExtResource("14_vxglm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Entities/Player" unique_id=81355650]
 position = Vector2(0, 13)
@@ -380,6 +382,63 @@ grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 14
 text = "2"
+horizontal_alignment = 2
+
+[node name="Slot3" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=633025614]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=1880763752]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=847316980]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=749522939]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "3"
 horizontal_alignment = 2
 
 [node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]

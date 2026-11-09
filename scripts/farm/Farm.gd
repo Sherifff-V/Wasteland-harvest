@@ -10,6 +10,13 @@ const NO_CELL := Vector2i(999999, 999999)
 
 func has_crop(cell: Vector2i) -> bool:
 	return crops.has(cell)
+	
+# returns true if successful
+func put_tilled_dirt(cell: Vector2i) -> bool:
+	if soil.get_cell_source_id(cell) != 3 and soil.get_cell_source_id(cell) == 1 and soil.get_cell_atlas_coords(cell) == Vector2i(1, 1):
+		soil.set_cell(cell, 3, Vector2i(0, 0))
+		return true
+	return false
 
 func check_player_collision(cell: Vector2i) -> bool:
 	#player rect
@@ -25,7 +32,7 @@ func check_player_collision(cell: Vector2i) -> bool:
 	return not cell_rect.intersects(player_rect)
 
 func can_plant(cell: Vector2i) -> bool:
-	return soil.get_cell_atlas_coords(cell) == Vector2i(1,1) and soil.get_cell_source_id(cell) == 1 and not crops.has(cell) and check_player_collision(cell)
+	return soil.get_cell_source_id(cell) == 3 and not crops.has(cell) and check_player_collision(cell)
 
 func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	if not can_plant(cell):

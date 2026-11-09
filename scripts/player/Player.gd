@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
 
 @export var seed: SeedItem
+@export var hoe: ItemData
 
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
@@ -12,6 +13,8 @@ func _ready() -> void:
 func checkInventory() -> void: # debug only
 	inventory_comp.inventory.add(seed, 5)
 	
+	if inventory_comp.inventory.count(hoe) == 0: inventory_comp.inventory.add(hoe, 1)
+		
 	var selected_item = inventory_comp.get_selected().item
 	if selected_item:
 		print("selected item name: ", selected_item.display_name, ", amount: ", inventory_comp.inventory.count(selected_item))
