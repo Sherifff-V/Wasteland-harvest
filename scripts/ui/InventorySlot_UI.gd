@@ -1,6 +1,6 @@
 class_name InventorySlot_UI extends TextureRect
 
-# Inside each slot, add a child TextureRect node named "Icon" to display the item sprite
+@onready var icon: TextureRect = $Icon
 @onready var label: Label = $Label 
 @onready var count: Label = $Count
 
@@ -25,7 +25,11 @@ func set_item(index: int) -> void:
 	var item: ItemData = slot.item
 	
 	if item != null:
-		label.text = item.display_name
+		if item.icon != null:
+			icon.texture = item.icon
+		else:
+			label.text = item.display_name
+			
 		count.text = str(slot.amount) + 'X'
 	else:
 		clear_slot()
@@ -34,12 +38,14 @@ func on_selected_changed(index: int) -> void:
 	if name == "Slot" + str(index + 1):
 		texture = selected_texture
 		custom_minimum_size = Vector2(18*4, 18*4)
+		icon.size = Vector2(18*4, 18*4)
 	else:
 		texture = normal_texture
 		custom_minimum_size = Vector2(16*4, 16*4)
+		icon.size = Vector2(16*4, 16*4)
 
 func clear_slot() -> void:
 	label.text = ""
 	count.text = ""
-	#icon.texture = null
-	#icon.visible = false
+	icon.texture = null
+	icon.visible = false
