@@ -3,7 +3,7 @@ class_name InventoryComponent extends Node
 signal selected_changed(index: int)
 
 @onready var input: InputComponent = get_parent().get_node("InputComponent")
-@export var size := 3
+@export var size := 5
 
 var inventory: Inventory
 var selected_index := 0   # hotbar selection

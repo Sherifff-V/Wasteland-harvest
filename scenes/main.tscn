@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://c1s0o2484c6cj" path="res://sprites/slot_inactive.png" id="22_y6deb"]
 [ext_resource type="Script" uid="uid://cib5n2o2gffi4" path="res://scripts/ui/InventorySlot_UI.gd" id="23_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://bpsl2xywmu2d5" path="res://sprites/slot_active.png" id="24_og1vs"]
+[ext_resource type="FontFile" uid="uid://cd6qem26iwgdh" path="res://data/fonts/Silkscreen-Bold.ttf" id="25_og1vs"]
+[ext_resource type="FontFile" uid="uid://ik1waoi1obal" path="res://data/fonts/Silkscreen-Regular.ttf" id="25_vxglm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
 texture = ExtResource("1_choun")
@@ -647,9 +649,11 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
 theme_override_font_sizes/font_size = 9
 autowrap_mode = 2
 clip_text = true
+uppercase = true
 
 [node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1152684648]
 layout_mode = 1
@@ -664,6 +668,7 @@ offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 2
 vertical_alignment = 2
@@ -678,6 +683,7 @@ offset_right = -4.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
 theme_override_font_sizes/font_size = 14
 text = "1"
 horizontal_alignment = 2
@@ -688,7 +694,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 5
 
-[node name="Slot2" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1413676005]
+[node name="Slot2" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=851361316]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -698,7 +704,7 @@ script = ExtResource("23_pm3ni")
 normal_texture = ExtResource("22_y6deb")
 selected_texture = ExtResource("24_og1vs")
 
-[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=480853225]
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=182569563]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -710,11 +716,13 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
 theme_override_font_sizes/font_size = 9
 autowrap_mode = 2
 clip_text = true
+uppercase = true
 
-[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=143563774]
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1402621476]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -727,11 +735,12 @@ offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=2041269664]
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1324235955]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -741,17 +750,18 @@ offset_right = -4.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
 theme_override_font_sizes/font_size = 14
 text = "2"
 horizontal_alignment = 2
 
-[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1828365830]
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1238617469]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 5
 
-[node name="Slot3" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=820159524]
+[node name="Slot3" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=2098414416]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -761,7 +771,7 @@ script = ExtResource("23_pm3ni")
 normal_texture = ExtResource("22_y6deb")
 selected_texture = ExtResource("24_og1vs")
 
-[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=1115598206]
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=142907452]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -773,11 +783,13 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
 theme_override_font_sizes/font_size = 9
 autowrap_mode = 2
 clip_text = true
+uppercase = true
 
-[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=1338958855]
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=723233254]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -790,11 +802,12 @@ offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
 theme_override_font_sizes/font_size = 14
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=655566091]
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=447633447]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -804,11 +817,146 @@ offset_right = -4.0
 offset_bottom = 23.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
 theme_override_font_sizes/font_size = 14
 text = "3"
 horizontal_alignment = 2
 
-[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=615842317]
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=964366299]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot4" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=498950267]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=1810066761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=868372102]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=1400864540]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "4"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=346576242]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot5" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1443667966]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=1955295196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=1842728043]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=1184815852]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "5"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=886873782]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

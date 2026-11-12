@@ -15,7 +15,6 @@ func _ready() -> void:
 	if inv_comp:
 		inv_comp.selected_changed.connect(on_selected_changed)
 		inv_comp.inventory.slot_changed.connect(set_item)
-		print("set item in _ready")
 
 func set_item(index: int) -> void:
 	if name != "Slot" + str(index + 1):

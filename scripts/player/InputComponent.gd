@@ -13,7 +13,7 @@ signal interact_pressed
 @onready var player: Node2D = get_parent()
 @onready var movement: MovementComponent = get_parent().get_node("MovementComponent")
 
-const HOTBAR_SIZE := 3 # less or equal 9
+const HOTBAR_SIZE := 5 # less or equal 9
 
 var move_direction := Vector2.ZERO
 var last_hovered_tile: Vector2i = Vector2i(-9999, -9999)
