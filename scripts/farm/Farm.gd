@@ -2,6 +2,7 @@ class_name Farm extends Node
 
 @export var soil: TileMapLayer
 @export var ground: TileMapLayer
+@export var diggable: TileMapLayer
 @export var crops_root: Node2D
 @export var crop_scene: PackedScene
 @export var player: Player
@@ -10,13 +11,17 @@ var crops: Dictionary = {}   # Vector2i -> Crop
 
 const NO_CELL := Vector2i(999999, 999999)
 const TERRAIN_SET = 0
-const GRASS_TERRAIN = 0
 
 func has_crop(cell: Vector2i) -> bool:
 	return crops.has(cell)
-	
+
+func can_dig(cell: Vector2i) -> bool:
+	return diggable.get_cell_source_id(cell) != -1 and soil.get_cell_source_id(cell) != 1
+
 # returns true if successful
 func dig_dirt(cell: Vector2i) -> bool:
+	if not can_dig(cell): return false
+	
 	var cells_to_dig: Array[Vector2i] = []
 
 	cells_to_dig.append(cell)
@@ -35,8 +40,6 @@ func dig_dirt(cell: Vector2i) -> bool:
 		if soil.get_cell_source_id(neighbor_cell) == -1:
 			soil.set_cell(neighbor_cell, 2, Vector2i(0, 0))
 
-	# 3. Erase the 3x3 grass cells AND automatically update all surrounding terrain borders
-	# Passing -1 as the terrain ID erases the cells and recalculates neighbors properly
 	ground.set_cells_terrain_connect(cells_to_dig, TERRAIN_SET, -1, false)
 
 	return true

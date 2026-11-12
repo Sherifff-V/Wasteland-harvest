@@ -20,25 +20,14 @@ func _ready() -> void:
 	input.left_click_pressed.connect(select_pos)
 	input.interact_pressed.connect(select_nearest)
 	input.mouse_hovering.connect(hovering_selection)
-	inventory_comp.selected_changed.connect(on_slot_changed)
+	inventory_comp.selected_changed.connect(selection_clear)
 
 func hovering_selection(tile: Vector2i) -> void:
 	if tile != last_preview_pos:
 		preview_layer.set_cell(last_preview_pos, -1)
 		
 		var item = inventory_comp.get_selected().item
-		
-		if item != null and in_placeable_distance(tile):
-			if item.id == "hoe":
-				if soil_layer.get_cell_source_id(tile) == 1:
-					preview_layer.set_cell(tile, 0, Vector2i(0, 0))
-				else:
-					preview_layer.set_cell(tile, 1, Vector2i(0, 0))
-			elif item.id == "cucumber_seed":
-				if !farm.can_plant(tile):
-					preview_layer.set_cell(tile, 0, Vector2i(0, 0))
-				else:
-					preview_layer.set_cell(tile, 1, Vector2i(0, 0))
+		update_selection(tile, item)
 	
 	last_preview_pos = tile
 
@@ -49,6 +38,7 @@ func select_pos(pos: Vector2) -> void:
 	if item != null and in_placeable_distance(grid_pos):
 		selected_cell = grid_pos
 		cell_selected.emit(grid_pos, item)
+		update_selection(grid_pos, item)
 
 func select_nearest() -> void:
 	var center := world_to_cell(get_parent().global_position)
@@ -62,10 +52,23 @@ func in_placeable_distance(tile_pos: Vector2i) -> bool:
 	var player_pos = get_parent().global_position
 	return tile_pos.distance_to(world_to_cell(player_pos)) <= selection_range
 
-func on_slot_changed(index: int) -> void:
+func selection_clear(index: int) -> void:
 	preview_layer.clear()
 		
 	last_preview_pos = Vector2i(-9999, -9999)
+	
+func update_selection(tile: Vector2i, item: ItemData) -> void:
+	if item != null and in_placeable_distance(tile):
+		if item.id == "hoe":
+			if not farm.can_dig(tile):
+				preview_layer.set_cell(tile, 0, Vector2i(0, 0))
+			else:
+				preview_layer.set_cell(tile, 1, Vector2i(0, 0))
+		elif item.id == "cucumber_seed":
+			if !farm.can_plant(tile):
+				preview_layer.set_cell(tile, 0, Vector2i(0, 0))
+			else:
+				preview_layer.set_cell(tile, 1, Vector2i(0, 0))
 	
 func world_to_cell(global_pos: Vector2) -> Vector2:
 	var cell: Vector2i = soil_layer.local_to_map(soil_layer.to_local(global_pos));

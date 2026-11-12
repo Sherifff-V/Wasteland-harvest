@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bng0q5800rxhb"
-path="res://.godot/imported/grass_tiles_outward.png-677fca56eb443b34e94e9a7b1e158f32.ctex"
+uid="uid://bm2xtpgdjtk3t"
+path="res://.godot/imported/check_mark.png-4e5f6e98f1da48e0c1c5a8e9d6467a26.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ground/grass_tiles_outward.png"
-dest_files=["res://.godot/imported/grass_tiles_outward.png-677fca56eb443b34e94e9a7b1e158f32.ctex"]
+source_file="res://sprites/check_mark.png"
+dest_files=["res://.godot/imported/check_mark.png-4e5f6e98f1da48e0c1c5a8e9d6467a26.ctex"]
 
 [params]
 
