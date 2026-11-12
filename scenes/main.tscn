@@ -598,6 +598,7 @@ hint = NodePath("../../World/Entities/Player/UIComponent")
 
 [node name="Label" type="Label" parent="UI/HarvestPrompt" unique_id=530381403]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("25_vxglm")
 theme_override_font_sizes/font_size = 32
 text = "Harvest ( F )"
 horizontal_alignment = 1
