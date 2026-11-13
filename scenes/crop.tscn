@@ -9,9 +9,13 @@
 script = ExtResource("1_fe780")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=163941665]
+texture_filter = 1
 
 [node name="GrowthComponent" type="Node" parent="." unique_id=954800862]
 script = ExtResource("1_pl0dt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1610551258]
 shape = SubResource("RectangleShape2D_icqri")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=243843383]
+z_index = -1

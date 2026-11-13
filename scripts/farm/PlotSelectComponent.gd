@@ -54,7 +54,8 @@ func in_placeable_distance(tile_pos: Vector2i) -> bool:
 
 func selection_clear(index: int) -> void:
 	preview_layer.clear()
-		
+	update_selection(last_preview_pos, inventory_comp.get_selected().item)
+	
 	last_preview_pos = Vector2i(-9999, -9999)
 	
 func update_selection(tile: Vector2i, item: ItemData) -> void:

@@ -7,13 +7,14 @@ signal debug_checkinventorysig
 signal left_click_pressed(world_pos: Vector2)
 signal left_click_interact_pressed
 signal interact_pressed
+signal mouse_scroll(up: bool)
 
 @export var ground_layer: TileMapLayer
 
 @onready var player: Node2D = get_parent()
 @onready var movement: MovementComponent = get_parent().get_node("MovementComponent")
 
-const HOTBAR_SIZE := 5 # less or equal 9
+const HOTBAR_SIZE := 9 # less or equal 9
 
 var move_direction := Vector2.ZERO
 var last_hovered_tile: Vector2i = Vector2i(-9999, -9999)
@@ -31,6 +32,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		debug_checkinventorysig.emit()
 	elif event.is_action_pressed("interact"):
 		interact_pressed.emit()
+	elif event.is_action_pressed("scroll_up"):
+		mouse_scroll.emit(true)
+		mouse_hovering.emit(tile_pos)
+	elif event.is_action_pressed("scroll_down"):
+		mouse_scroll.emit(false)
+		mouse_hovering.emit(tile_pos)
 	
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:

@@ -15,6 +15,7 @@ func _ready() -> void:
 	if inv_comp:
 		inv_comp.selected_changed.connect(on_selected_changed)
 		inv_comp.inventory.slot_changed.connect(set_item)
+		inv_comp.deselect.connect(on_deselect)
 
 func set_item(index: int) -> void:
 	if name != "Slot" + str(index + 1):
@@ -32,6 +33,12 @@ func set_item(index: int) -> void:
 		count.text = str(slot.amount) + 'X'
 	else:
 		clear_slot()
+
+func on_deselect(index: int) -> void:
+	if name == "Slot" + str(index + 1):
+		texture = normal_texture
+		custom_minimum_size = Vector2(16*4, 16*4)
+		icon.size = Vector2(16*4, 16*4)
 
 func on_selected_changed(index: int) -> void:
 	if name == "Slot" + str(index + 1):

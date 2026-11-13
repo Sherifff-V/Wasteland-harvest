@@ -510,7 +510,6 @@ tile_map_data = PackedByteArray("AAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAA
 tile_set = SubResource("TileSet_icqri")
 
 [node name="SelectionPreview" type="TileMapLayer" parent="World" unique_id=528742104]
-z_index = 1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_y2l6j")
 tile_set = SubResource("TileSet_o6xl0")
@@ -958,6 +957,274 @@ text = "5"
 horizontal_alignment = 2
 
 [node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=886873782]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot6" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1463842997]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=790155226]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=1796185164]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=1912767293]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "6"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=422978149]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot7" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=800807290]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=883694586]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=1911848333]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=1909094653]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "7"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=2029714860]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot8" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1970490599]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=1936664712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=712538602]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=26510197]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "8"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=738910317]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot9" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1020192407]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=1131479714]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=1287226800]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=1812043794]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "9"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=1744065604]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
