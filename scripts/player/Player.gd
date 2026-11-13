@@ -1,11 +1,11 @@
-class_name Player
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @onready var input_component: InputComponent = $InputComponent
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
 
 @export var seed: SeedItem
+@export var hoe: ItemData
 
 var current_weapon = null
 var last_fire_time: float = 0.0
@@ -15,12 +15,18 @@ var shotgun = null
 
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
+
+func checkInventory() -> void: # debug only
+	inventory_comp.inventory.add(seed, 5)
+
+	if inventory_comp.inventory.count(hoe) == 0: inventory_comp.inventory.add(hoe, 1)
+
 	inventory_comp.inventory.add_to_slot(seed, 1, 5)
 	inventory_comp.selected_changed.connect(_on_slot_changed)
 
 	var PistolScript = preload("res://scripts/Weapons/Pistol.gd")
 	var ShotgunScript = preload("res://scripts/Weapons/Shotgun.gd")
-	
+
 	pistol = PistolScript.new()
 	shotgun = ShotgunScript.new()
 
@@ -30,7 +36,7 @@ func _ready() -> void:
 func checkInventory() -> void:
 	var selected_item = inventory_comp.get_selected().item
 	if selected_item:
-		print("selected item name: ", selected_item.display_name, 
+		print("selected item name: ", selected_item.display_name,
 			  ", amount: ", inventory_comp.inventory.count(selected_item))
 
 func _physics_process(delta: float) -> void:
