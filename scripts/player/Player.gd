@@ -16,6 +16,7 @@ var shotgun = null
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
 	inventory_comp.inventory.add_to_slot(seed, 1, 5)
+	inventory_comp.selected_changed.connect(_on_slot_changed)
 
 	var PistolScript = preload("res://scripts/Weapons/Pistol.gd")
 	var ShotgunScript = preload("res://scripts/Weapons/Shotgun.gd")
@@ -48,3 +49,8 @@ func _on_weapon_1_selected() -> void:
 func _on_weapon_2_selected() -> void:
 	current_weapon = shotgun
 	print("Выбрано: ", shotgun.display_name)
+
+func _on_slot_changed(_index: int) -> void:
+	var selected_slot = inventory_comp.get_selected()
+	if selected_slot.is_empty():
+		current_weapon = null
