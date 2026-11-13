@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ct4sh0w1cmus5"]
-
-[ext_resource type="Script" uid="uid://cnhyvsimoy4pl" path="res://data/items/ItemData.gd" id="1_qjhbe"]
-
-[resource]
-script = ExtResource("1_qjhbe")
-id = &"hoe"
-display_name = "Hoe"
-max_stack = 1
