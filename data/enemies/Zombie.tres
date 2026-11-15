@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" format=3 uid="uid://bjrjuwxgkvnsy"]
+
+[ext_resource type="Script" uid="uid://cnhyvsimoy4pl" path="res://data/items/ItemData.gd" id="1_u7gq5"]
+[ext_resource type="Resource" uid="uid://cjxm30isefoj4" path="res://data/items/Cucumber_seed.tres" id="2_rjoty"]
+[ext_resource type="Script" uid="uid://pvx4ixj6r2cp" path="res://data/enemies/EnemyData.gd" id="3_pfy13"]
+[ext_resource type="Texture2D" uid="uid://dek58okd27imv" path="res://sprites/enemy_placeholder.png" id="4_h47p1"]
+
+[resource]
+script = ExtResource("3_pfy13")
+id = &"zombie"
+display_name = "Zombie"
+texture = ExtResource("4_h47p1")
+detection_range = 1000.0
+drops = Array[ExtResource("1_u7gq5")]([ExtResource("2_rjoty")])
