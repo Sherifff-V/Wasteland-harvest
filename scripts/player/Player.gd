@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
 
 #хп
-@onready var hp_label: Label = get_tree().current_scene.get_node("UI/HealthLabel")
+@onready var hp_label: Label = get_tree().current_scene.get_node("UI/HealthContainer/HealthLabel")
 
 @export var seed: SeedItem
 @export var hoe: ItemData
@@ -19,6 +19,7 @@ func _ready() -> void:
 	#хп
 	hp = maxhp
 	update_hp_lab()
+	await get_tree().create_timer(2.0).timeout
 	takedmg(100)
  
 func checkInventory() -> void: # debug only
@@ -44,7 +45,7 @@ func takedmg(amount : int) -> void:
 	
 	if hp == 0:
 		isDead = true
-		print('МЁРТВ!!!1!😭')
+		print('ТЫ МЁРТВ!!!1!😭')
 	
 	
 #ф-ия хила
@@ -58,5 +59,8 @@ func heal(amount:int) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if isDead: #прекращение движения при смерти
+		velocity = Vector2.ZERO
+		return
 	movement_component.move(self, input_component.move_direction, delta)
 	
