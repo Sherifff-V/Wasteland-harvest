@@ -963,4 +963,11 @@ offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 5
 
+[node name="HealthLabel" type="Label" parent="UI" unique_id=2006783149]
+offset_left = 45.0
+offset_top = 568.0
+offset_right = 175.0
+offset_bottom = 627.0
+text = "HP: 100/100"
+
 [node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]
