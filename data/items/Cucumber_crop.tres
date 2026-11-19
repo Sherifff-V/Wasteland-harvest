@@ -10,7 +10,6 @@
 [resource]
 script = ExtResource("1_m8o2h")
 id = &"cucumber_crop"
-stage_growth_time = 3.0
 stage_textures = Array[Texture2D]([ExtResource("3_l8rma"), ExtResource("4_7w83j"), ExtResource("5_7aq52"), ExtResource("6_0dutk")])
 offset = Vector2(0, -9)
 harvest_item = ExtResource("1_7aeml")
