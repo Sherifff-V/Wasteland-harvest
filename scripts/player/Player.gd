@@ -5,23 +5,15 @@ class_name Player extends CharacterBody2D
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
 
 #хп
-@onready var hp_label: Label = get_tree().current_scene.get_node("UI/HealthContainer/HealthLabel")
+@onready var hp_sys = $HealthSystem
+
 
 @export var seed: SeedItem
 @export var hoe: ItemData
-@export var maxhp := 100
-var hp:= 100
-var isDead := false	
 
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
 	
-	#хп
-	hp = maxhp
-	update_hp_lab()
-	await get_tree().create_timer(2.0).timeout
-	takedmg(100)
- 
 func checkInventory() -> void: # debug only
 	inventory_comp.inventory.add(seed, 5)
 	
@@ -31,35 +23,13 @@ func checkInventory() -> void: # debug only
 	if selected_item:
 		print("selected item name: ", selected_item.display_name, ", amount: ", inventory_comp.inventory.count(selected_item))
 	
-#ф-ия обновления плашки хп
-func update_hp_lab() -> void:
-	hp_label.text = "HP: %d/%d" % [hp, maxhp]
 
-#ф-ия получения урона
-func takedmg(amount : int) -> void:
-	if amount <= 0 or isDead: 
-		return
-	hp = maxi(hp - amount, 0) #защита от отрицательного здоровья
-	update_hp_lab()
-	print("HP: ", hp, "/", maxhp)
 	
-	if hp == 0:
-		isDead = true
-		print('ТЫ МЁРТВ!!!1!😭')
-	
-	
-#ф-ия хила
-func heal(amount:int) -> void:
-	if amount <= 0 or isDead:
-		return
-	hp = mini(hp + amount, maxhp)
-	update_hp_lab()
-	print("HP: ", hp, "/", maxhp)
 	
 
 
 func _physics_process(delta: float) -> void:
-	if isDead: #прекращение движения при смерти
+	if hp_sys.isDead: #прекращение движения при смерти
 		velocity = Vector2.ZERO
 		return
 	movement_component.move(self, input_component.move_direction, delta)

@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dq0ygdxje4js5" path="res://scenes/crop.tscn" id="14_jkv2x"]
 [ext_resource type="Resource" uid="uid://ct4sh0w1cmus5" path="res://data/items/Hoe.tres" id="14_vxglm"]
 [ext_resource type="Script" uid="uid://ckevbdcpdemh3" path="res://scripts/ui/HarvestPrompt.gd" id="17_muem4"]
+[ext_resource type="Script" uid="uid://dtldiom4kfncw" path="res://scripts/systems/HP_Script.gd" id="18_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://c1s0o2484c6cj" path="res://sprites/slot_inactive.png" id="22_y6deb"]
 [ext_resource type="Script" uid="uid://cib5n2o2gffi4" path="res://scripts/ui/InventorySlot_UI.gd" id="23_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://bpsl2xywmu2d5" path="res://sprites/slot_active.png" id="24_og1vs"]
@@ -567,6 +568,9 @@ script = ExtResource("14_jbj1t")
 farm = NodePath("../../../../Systems/Farm")
 selector = NodePath("../PlotSelectComponent")
 inv_comp = NodePath("../InventoryComponent")
+
+[node name="HealthSystem" type="Node" parent="World/Entities/Player" unique_id=921552606]
+script = ExtResource("18_2wyq8")
 
 [node name="Crops" type="Node2D" parent="World/Entities" unique_id=720615601]
 
