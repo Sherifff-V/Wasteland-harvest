@@ -19,8 +19,6 @@ func _ready() -> void:
 	#хп
 	hp = maxhp
 	update_hp_lab()
-	await get_tree().create_timer(2.0).timeout
-	takedmg(100)
  
 func checkInventory() -> void: # debug only
 	inventory_comp.inventory.add(seed, 5)
@@ -36,7 +34,7 @@ func update_hp_lab() -> void:
 	hp_label.text = "HP: %d/%d" % [hp, maxhp]
 
 #ф-ия получения урона
-func takedmg(amount : int) -> void:
+func take_damage(amount : int) -> void:
 	if amount <= 0 or isDead: 
 		return
 	hp = maxi(hp - amount, 0) #защита от отрицательного здоровья

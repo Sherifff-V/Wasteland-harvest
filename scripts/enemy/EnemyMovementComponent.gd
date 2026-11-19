@@ -7,7 +7,6 @@ signal reached_goal(goal: Node2D)
 @export var arrive_distance := 5.0
 @export var prefer_crops := false
 
-
 @export_group("Crop raid roll")
 @export var roll_sides := 5
 @export var winning_roll := 1
@@ -15,6 +14,7 @@ signal reached_goal(goal: Node2D)
 @export var raid_timeout := 20.0 # time to reach the crop
 
 var player_range := 200.0
+var enemy_attack_reach := 1.0
 var pathfinder: GridPathfinder
 var goal: Node2D # null means goal cant be reached or no goal at all
 var raiding := false
@@ -27,6 +27,7 @@ var _last_target_cell := Vector2i(-99999, -99999)
 var _last_rand_moved_angle := 0.0;
 var _walk_timer := 0.0
 var _plant_check_timer := 0.0
+var _raid_time := 0.0
 var _is_walking = false;
 const walk_cd := 6.0;
 const plant_check_interval := 5.0
@@ -109,18 +110,21 @@ func _start_raid() -> bool:
 	return true
 
 func _raid_step(delta: float) -> Vector2:
-	if not is_instance_valid(goal): # harvested or destroyed on the way
-		end_raid()
-		return Vector2.ZERO
-
-	_walk_timer += delta
-	if raid_timeout > 0.0 and _walk_timer >= raid_timeout:
+	if not is_instance_valid(goal): # harvested or destroyed
 		end_raid()
 		return Vector2.ZERO
 
 	if reached:
-		# break plant logic here later
+		return Vector2.ZERO  # stand still, enemy.gd attacks while reached is true
+
+	_raid_time += delta
+	if raid_timeout > 0.0 and _raid_time >= raid_timeout:
 		end_raid()
+		return Vector2.ZERO
+
+	# close enough to hit the crop?
+	if _in_reach():
+		_arrive()
 		return Vector2.ZERO
 
 	_repath_timer -= delta
@@ -134,12 +138,18 @@ func _raid_step(delta: float) -> Vector2:
 		_index = 1
 
 	_advance()
-	if _index >= _path.size():
-		reached = true
-		reached_goal.emit(goal)
+	if _index >= _path.size(): # walked to the last point (the neighbouring cell)
+		_arrive()
 		return Vector2.ZERO
 	return body.global_position.direction_to(_path[_index])
 
+func _in_reach() -> bool:
+	return body.global_position.distance_to(pathfinder.cell_to_world(goal.cell)) <= enemy_attack_reach
+
+func _arrive() -> void:
+	reached = true
+	reached_goal.emit(goal)
+	
 func end_raid() -> void:
 	raiding = false
 	goal = null

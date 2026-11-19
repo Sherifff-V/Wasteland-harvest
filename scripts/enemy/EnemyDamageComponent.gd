@@ -1,11 +1,16 @@
-extends Node
+class_name EnemyDamageComponent extends Node
 
+@export var attack_interval := 1.0
+var damage := 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var _cooldown := 0.0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	_cooldown = maxf(_cooldown - delta, 0.0)
+
+func try_attack(target: Node) -> bool:
+	if _cooldown > 0.0 or not is_instance_valid(target) or not target.has_method("take_damage"):
+		return false
+	target.take_damage(damage)
+	_cooldown = attack_interval
+	return true

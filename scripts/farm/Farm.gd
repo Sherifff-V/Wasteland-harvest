@@ -70,7 +70,23 @@ func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	crop.global_position = soil.to_global(soil.map_to_local(cell)) + crop_data.offset
 	crop.setup(crop_data)
 	crops[cell] = crop
+	
+	crop.destroyed.connect(_remove_crop.bind(cell))
+	var pf := get_tree().get_first_node_in_group("pathfinder") as GridPathfinder
+	if pf:
+		pf.set_blocked(cell, true)
+	
 	return true
+
+func _remove_crop(cell: Vector2i) -> void:
+	var crop: Crop = crops.get(cell)
+	if crop == null:
+		return
+	crops.erase(cell)
+	crop.queue_free()
+	var pf := get_tree().get_first_node_in_group("pathfinder") as GridPathfinder
+	if pf:
+		pf.set_blocked(cell, false)
 
 ## returns the crop's data if it can be harvested right now, otherwise null
 func get_harvestable(cell: Vector2i) -> CropData:
@@ -84,8 +100,7 @@ func harvest(cell: Vector2i) -> void:
 	if crop == null:
 		return
 	if not crop.harvest(): # one-time crop or out of harvests
-		crop.queue_free()
-		crops.erase(cell)
+		_remove_crop(cell)
 		
 func nearest_harvestable(center: Vector2i, radius: float) -> Vector2i:
 	var best := NO_CELL
