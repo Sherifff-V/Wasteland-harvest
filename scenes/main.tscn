@@ -983,6 +983,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 5
 
+<<<<<<< HEAD
 [node name="Slot6" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1463842997]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
@@ -1250,5 +1251,20 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 stretch_mode = 5
+=======
+[node name="HealthContainer" type="PanelContainer" parent="UI" unique_id=281249758]
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 189.0
+offset_bottom = 45.0
+
+[node name="HealthLabel" type="Label" parent="UI/HealthContainer" unique_id=2006783149]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 24
+text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+>>>>>>> 8bab5c84e1c7cca43fc123181ffeb8bb9a0d08f0
 
 [node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]
