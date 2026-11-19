@@ -2,7 +2,6 @@ class_name Crop extends Node2D
 
 var data: CropData
 var harvests_done := 0
-var cell: Vector2i
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var growth: GrowthComponent = $GrowthComponent
