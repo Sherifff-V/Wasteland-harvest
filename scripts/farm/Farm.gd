@@ -64,9 +64,10 @@ func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	if not can_plant(cell):
 		return false
 	var crop: Crop = crop_scene.instantiate() as Crop
+	crop.cell = cell
+	crop.add_to_group("crop")
 	crops_root.add_child(crop)
 	crop.global_position = soil.to_global(soil.map_to_local(cell)) + crop_data.offset
-	#crop.z_index = -1;
 	crop.setup(crop_data)
 	crops[cell] = crop
 	return true

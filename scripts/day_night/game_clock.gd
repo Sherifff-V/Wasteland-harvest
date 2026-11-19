@@ -6,8 +6,8 @@ signal day_passed(day: int)
 var environment_gradient: Gradient = preload("res://data/day_night_gradient.tres")
 var light_modifier: CanvasModulate = null
 
-const DAY_LENGTH := 20.0; # in seconds
-const NIGHT_LENGTH := 10.0; # in seconds
+const DAY_LENGTH := 2.0; # in seconds
+const NIGHT_LENGTH := 15.0; # in seconds
 
 var day_count := 1;
 var time_length = DAY_LENGTH + NIGHT_LENGTH;
