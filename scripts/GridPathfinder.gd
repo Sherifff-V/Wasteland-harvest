@@ -74,3 +74,30 @@ func find_path(from_world: Vector2, to_world: Vector2) -> PackedVector2Array:
 	for cell in astar.get_id_path(a, b):
 		out.append(cell_to_world(cell))
 	return out
+	
+func _ids_to_world(ids: Array[Vector2i]) -> PackedVector2Array:
+	var out := PackedVector2Array()
+	for cell in ids:
+		out.append(cell_to_world(cell))
+	return out
+
+func find_path_near(from_world: Vector2, to_world: Vector2) -> PackedVector2Array:
+	var direct := find_path(from_world, to_world)
+	if not direct.is_empty():
+		return direct
+	var a := world_to_cell(from_world)
+	var b := world_to_cell(to_world)
+	if not astar.is_in_boundsv(a) or astar.is_point_solid(a):
+		return PackedVector2Array()
+	var best: Array[Vector2i] = []
+	for dx in range(-1, 2):
+		for dy in range(-1, 2):
+			if dx == 0 and dy == 0:
+				continue
+			var n := b + Vector2i(dx, dy)
+			if not astar.is_in_boundsv(n) or astar.is_point_solid(n):
+				continue
+			var ids := astar.get_id_path(a, n)
+			if not ids.is_empty() and (best.is_empty() or ids.size() < best.size()):
+				best = ids
+	return _ids_to_world(best)
