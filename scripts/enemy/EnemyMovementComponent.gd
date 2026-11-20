@@ -140,6 +140,7 @@ func _raid_step(delta: float) -> Vector2:
 	_advance()
 	if _index >= _path.size(): # walked to the last point (the neighbouring cell)
 		_arrive()
+		end_raid()
 		return Vector2.ZERO
 	return body.global_position.direction_to(_path[_index])
 

@@ -36,10 +36,10 @@ func _on_stage_changed(stage: int) -> void:
 
 func is_mature() -> bool:
 	return growth.is_mature()
-
 func take_damage(amount: int) -> void:
 	if health <= 0:
 		return
+
 	health -= amount
 	base.modulate = Color(1, 0.4, 0.4)
 	sprite.modulate = Color(1, 0.4, 0.4)

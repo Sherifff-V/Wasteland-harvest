@@ -1,7 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
 @export var data: EnemyData
-@onready var health_comp: EnemyHealthComponent = $HealthComponent
+@onready var health_comp: HealthSystem = $HealthComponent
 @onready var movement: EnemyMovementComponent = $MovementComponent
 @onready var damage_comp: EnemyDamageComponent = $DamageComponent
 @onready var sprite: Sprite2D = $Sprite2D
@@ -22,12 +22,21 @@ func _physics_process(delta: float) -> void:
 	if target:
 		velocity = movement.get_direction(target, delta) * data.speed
 	move_and_slide()
-	
-	if movement.reached and is_instance_valid(movement.goal):
-		damage_comp.try_attack(movement.goal)
+	_attack()
 
 func _on_reached_goal(goal: Node2D) -> void:
 	print(name, " reached ", goal.name)
+	_attack()
 
+func _attack() -> void:
+	if movement.reached and is_instance_valid(movement.goal):
+		damage_comp.try_attack(movement.goal)
+		return
+	
+	if target and global_position.distance_to(target.global_position) <= data.attack_reach:
+		if damage_comp.try_attack(target):
+			print("hit player")
+			
 func _on_died() -> void:
+	print("enemy killed the player")
 	queue_free()
