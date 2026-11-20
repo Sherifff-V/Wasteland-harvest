@@ -3,14 +3,21 @@ class_name Player extends CharacterBody2D
 @onready var input_component: InputComponent = $InputComponent
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
-#хп
-@onready var hp_sys = $HealthSystem
+@onready var ui_comp: UIComponent = $UIComponent
 
 @export var seed: SeedItem
 @export var hoe: ItemData
 
+#хп
+@onready var hp_sys = $HealthSystem
+
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
+	
+	#хп
+	hp_sys.hp_changed.connect(_on_hp_changed)
+	ui_comp.update_hp_lab(hp_sys.hp, hp_sys.maxhp)
+	
 	
 func checkInventory() -> void: # debug only
 	inventory_comp.inventory.add(seed, 5)
@@ -20,13 +27,16 @@ func checkInventory() -> void: # debug only
 	var selected_item = inventory_comp.get_selected().item
 	if selected_item:
 		print("selected item name: ", selected_item.display_name, ", amount: ", inventory_comp.inventory.count(selected_item))
+	
 
 func take_damage(amount: int) -> void:
-	hp_sys.take_damage(amount)	
+	hp_sys.take_damage(amount)
+
+func _on_hp_changed(new_hp: int) -> void:
+	ui_comp.update_hp_lab(new_hp, hp_sys.maxhp)
 
 func _physics_process(delta: float) -> void:
 	if hp_sys.isDead: #прекращение движения при смерти
 		velocity = Vector2.ZERO
 		return
 	movement_component.move(self, input_component.move_direction, delta)
-	
