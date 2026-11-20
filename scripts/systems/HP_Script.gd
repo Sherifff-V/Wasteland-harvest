@@ -1,23 +1,29 @@
 class_name HealthSystem extends Node
-@onready var hp_label: Label = get_tree().current_scene.get_node("UI/HealthContainer/HealthLabel")
+signal hp_changed(current_hp: int, maximum_hp: int)
+signal died
+
 @export var maxhp := 100
+
+
+
 var hp:= 100
 var isDead := false	
 
 func _ready() -> void:
 	hp = maxhp
-	update_hp_lab()
 
-#ф-ия обновления плашки хп
-func update_hp_lab() -> void:
-	hp_label.text = "HP: %d/%d" % [hp, maxhp]
+func setup(new_maxhp: int) -> void:
+	maxhp = maxi(new_maxhp, 1)
+	hp = maxhp
+	isDead = false
+	hp_changed.emit(hp, maxhp)
 
 #ф-ия хила
 func heal(amount:int) -> void:
 	if amount <= 0 or isDead:
 		return
 	hp = mini(hp + amount, maxhp)
-	update_hp_lab()
+	hp_changed.emit(hp, maxhp)
 	print("HP: ", hp, "/", maxhp)
 	
 	
@@ -25,10 +31,14 @@ func heal(amount:int) -> void:
 func takedmg(amount : int) -> void:
 	if amount <= 0 or isDead: 
 		return
-	hp = maxi(hp - amount, 0) #защита от отрицательного здоровья
-	update_hp_lab()
-	print("HP: ", hp, "/", maxhp)
-	
+	hp = maxi(hp - amount, 0)
+
 	if hp == 0:
 		isDead = true
-		print('ТЫ МЁРТВ!!!1!😭')
+
+	hp_changed.emit(hp, maxhp)
+
+	if isDead:
+		died.emit()
+
+	print("HP: ", hp, "/", maxhp)

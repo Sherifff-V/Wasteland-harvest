@@ -4,15 +4,22 @@ class_name Player extends CharacterBody2D
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
 
-#хп
-@onready var hp_sys = $HealthSystem
 
 
 @export var seed: SeedItem
 @export var hoe: ItemData
 
+#хп
+@onready var hp_label: Label = get_tree().current_scene.get_node("UI/HealthContainer/HealthLabel")
+@onready var hp_sys = $HealthSystem
+
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
+	
+	#хп
+	hp_sys.hp_changed.connect(update_hp_lab)
+	update_hp_lab(hp_sys.hp, hp_sys.maxhp)
+	
 	
 func checkInventory() -> void: # debug only
 	inventory_comp.inventory.add(seed, 5)
@@ -26,11 +33,12 @@ func checkInventory() -> void: # debug only
 
 	
 	
-
+#ф-ия обновления плашки хп
+func update_hp_lab(hp  : int, maxhp : int) -> void:
+	hp_label.text = "HP: %d/%d" % [hp, maxhp]
 
 func _physics_process(delta: float) -> void:
 	if hp_sys.isDead: #прекращение движения при смерти
 		velocity = Vector2.ZERO
 		return
 	movement_component.move(self, input_component.move_direction, delta)
-	
