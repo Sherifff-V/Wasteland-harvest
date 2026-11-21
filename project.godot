@@ -18,6 +18,7 @@ config/icon="uid://cxmwkvvh2vkvf"
 [autoload]
 
 GameClock="*uid://bjrhoq7cec0vy"
+ItemDatabase="*uid://68pd241j7eeh"
 
 [display]
 

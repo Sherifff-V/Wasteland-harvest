@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://ct4sh0w1cmus5"]
 
-[ext_resource type="Script" uid="uid://cnhyvsimoy4pl" path="res://data/items/ItemData.gd" id="1_qjhbe"]
+[ext_resource type="Texture2D" uid="uid://ckvils8sjgt7" path="res://sprites/items/hoe_item.png" id="1_lnr13"]
+[ext_resource type="Script" uid="uid://cnhyvsimoy4pl" path="res://data/ItemData.gd" id="1_qjhbe"]
 
 [resource]
 script = ExtResource("1_qjhbe")
 id = &"hoe"
 display_name = "Hoe"
+icon = ExtResource("1_lnr13")
 max_stack = 1

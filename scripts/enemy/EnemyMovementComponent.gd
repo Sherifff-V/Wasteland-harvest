@@ -150,6 +150,7 @@ func _in_reach() -> bool:
 func _arrive() -> void:
 	reached = true
 	reached_goal.emit(goal)
+	_walk_timer = walk_cd
 	
 func end_raid() -> void:
 	raiding = false

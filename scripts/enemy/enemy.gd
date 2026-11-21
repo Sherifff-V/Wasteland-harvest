@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	_attack()
 
 func _on_reached_goal(goal: Node2D) -> void:
-	print(name, " reached ", goal.name)
+	#print(name, " reached ", goal.name)
 	_attack()
 
 func _attack() -> void:
@@ -34,8 +34,7 @@ func _attack() -> void:
 		return
 	
 	if target and global_position.distance_to(target.global_position) <= data.attack_reach:
-		if damage_comp.try_attack(target):
-			print("hit player")
+		damage_comp.try_attack(target)
 			
 func _on_died() -> void:
 	print("enemy killed the player")

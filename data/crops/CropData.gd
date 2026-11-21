@@ -1,5 +1,7 @@
 class_name CropData extends Resource
 
+var current_stage: int = 0;
+
 @export var id: StringName
 @export var stage_growth_time: float = 1.0
 @export var max_health: int = 3
@@ -8,7 +10,9 @@ class_name CropData extends Resource
 
 @export_group("Harvest")
 @export var harvest_item: ItemData
+@export var seed_item_id: StringName
 @export var harvest_amount: int = 1
+@export var harvest_stage: int = 4 # count from 1
 
 @export_group("Regrowing")
 @export var regrows := false

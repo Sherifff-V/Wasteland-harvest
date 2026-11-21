@@ -27,6 +27,8 @@ func set_item(index: int) -> void:
 	if item != null:
 		if item.icon != null:
 			icon.texture = item.icon
+			icon.size = Vector2(16*4, 16*4)
+			icon.visible = true
 		else:
 			label.text = item.display_name
 			

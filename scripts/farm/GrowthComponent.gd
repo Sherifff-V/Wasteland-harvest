@@ -25,11 +25,13 @@ func _update_stage() -> void:
 	if new_stage != stage:
 		stage = new_stage
 		stage_changed.emit(stage)
+		data.current_stage = stage
 
 func is_mature() -> bool:
-	return stage >= data.stage_textures.size() - 1
+	return stage >= data.harvest_stage - 1
 
 func regrow() -> void:
 	stage = data.regrow_stage
 	growth_time = stage * data.stage_growth_time
 	stage_changed.emit(stage)
+	data.current_stage = stage
