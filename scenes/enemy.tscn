@@ -19,8 +19,9 @@ shape = SubResource("RectangleShape2D_icqri")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=791034535]
 
-[node name="HealthComponent" type="Node" parent="." unique_id=929556633]
+[node name="HealthComponent" type="Node" parent="." unique_id=929556633 node_paths=PackedStringArray("sprite")]
 script = ExtResource("3_c4w8v")
+sprite = NodePath("../Sprite2D")
 
 [node name="DamageComponent" type="Node" parent="." unique_id=872958898]
 script = ExtResource("3_xwavj")

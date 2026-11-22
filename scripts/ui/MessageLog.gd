@@ -17,8 +17,6 @@ func _on_posted(text: String, color: Color) -> void:
 	label.add_theme_color_override("font_color", color)
 	label.add_theme_font_override("font", pixel_font)
 	label.add_theme_font_size_override("font_size", 16)
-	#label.add_theme_color_override("font_outline_color", Color.BLACK)
-	#label.add_theme_constant_override("outline_size", 4)
 	add_child(label)
 
 	while get_child_count() > max_messages: # drop the oldest

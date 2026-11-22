@@ -3,6 +3,7 @@ signal hp_changed(current_hp: int)
 signal died
 
 @export var maxhp := 100
+@export var sprite: Sprite2D
 
 var hp:= 100
 var isDead := false	
@@ -22,7 +23,7 @@ func heal(amount:int) -> void:
 		return
 	hp = mini(hp + amount, maxhp)
 	hp_changed.emit(hp)
-	print("HP: ", hp, "/", maxhp)
+	#print("HP: ", hp, "/", maxhp)
 	
 	
 #ф-ия получения урона
@@ -30,13 +31,17 @@ func take_damage(amount : int) -> void:
 	if amount <= 0 or isDead: 
 		return
 	hp = maxi(hp - amount, 0)
-
+	
 	if hp == 0:
 		isDead = true
 
 	hp_changed.emit(hp)
+	sprite.modulate = Color(1, 0.4, 0.4)
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.15)
 
 	if isDead:
-		died.emit()
+		tween.finished.connect(died.emit)
+		
 
 	print("HP: ", hp, "/", maxhp)

@@ -32,7 +32,7 @@ func _on_stage_changed(stage: int) -> void:
 	sprite.centered = false
 	sprite.offset = off
 	sprite.region_enabled = true
-	sprite.region_rect = Rect2(0, 0, w, h - 18) # might change h - 18 to sometihng else
+	sprite.region_rect = Rect2(0, 0, w, h - 18)
 
 func is_mature() -> bool:
 	return growth.is_mature()

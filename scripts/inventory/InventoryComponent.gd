@@ -8,7 +8,7 @@ signal deselect(index: int)
 @export var size := 9
 
 var inventory: Inventory
-var selected_index := -1   # hotbar selection
+var selected_index := -1 # hotbar selection
 
 func _ready() -> void:
 	inventory = Inventory.new(size)
