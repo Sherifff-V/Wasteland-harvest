@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ma1bhhjkf126"]
+
+[ext_resource type="Script" uid="uid://b5cb53il2d0v0" path="res://scripts/enemy/enemy.gd" id="1_5uy6h"]
+[ext_resource type="Resource" uid="uid://bjrjuwxgkvnsy" path="res://data/enemies/Zombie.tres" id="2_xwavj"]
+[ext_resource type="Script" uid="uid://dtldiom4kfncw" path="res://scripts/systems/HP_Script.gd" id="3_c4w8v"]
+[ext_resource type="Script" uid="uid://64e1tomy04tm" path="res://scripts/enemy/EnemyDamageComponent.gd" id="3_xwavj"]
+[ext_resource type="Script" uid="uid://nbqncdaqieny" path="res://scripts/enemy/EnemyMovementComponent.gd" id="4_nenq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icqri"]
+
+[node name="Zombie" type="CharacterBody2D" unique_id=624883747]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_5uy6h")
+data = ExtResource("2_xwavj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040555294]
+shape = SubResource("RectangleShape2D_icqri")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=791034535]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=929556633 node_paths=PackedStringArray("sprite")]
+script = ExtResource("3_c4w8v")
+sprite = NodePath("../Sprite2D")
+
+[node name="DamageComponent" type="Node" parent="." unique_id=872958898]
+script = ExtResource("3_xwavj")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=61125969]
+script = ExtResource("4_nenq2")

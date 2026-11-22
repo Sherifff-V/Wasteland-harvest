@@ -7,6 +7,7 @@ signal harvestable_nearby_changed(is_near: bool)
 @export var inv_comp: InventoryComponent
 
 @onready var player: Node2D = get_parent()
+@onready var hp_label: Label = get_tree().current_scene.get_node("UI/HealthContainer/HealthLabel")
 
 var _was_near := false
 
@@ -20,3 +21,7 @@ func _process(_delta: float) -> void:
 	if near != _was_near:
 		_was_near = near
 		harvestable_nearby_changed.emit(near)
+		
+#ф-ия обновления плашки хп
+func update_hp_lab(hp  : int, maxhp : int) -> void:
+	hp_label.text = "HP: %d/%d" % [hp, maxhp]

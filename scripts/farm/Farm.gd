@@ -16,7 +16,7 @@ func has_crop(cell: Vector2i) -> bool:
 	return crops.has(cell)
 
 func can_dig(cell: Vector2i) -> bool:
-	return diggable.get_cell_source_id(cell) != -1 and soil.get_cell_source_id(cell) != 1
+	return diggable.get_cell_source_id(cell) != -1 and soil.get_cell_source_id(cell) != 1 and ground.get_cell_source_id(cell) != -1
 
 # returns true if successful
 func dig_dirt(cell: Vector2i) -> bool:
@@ -44,13 +44,12 @@ func dig_dirt(cell: Vector2i) -> bool:
 
 	return true
 
-func check_player_collision(cell: Vector2i) -> bool:
-	#player rect
-	var col_shape: CollisionShape2D = player.get_node("CollisionShape2D")
+func check_collision(cell: Vector2i, col_shape: CollisionShape2D) -> bool:
+	#rect1
 	var hitbox_size: Vector2 = col_shape.shape.get_rect().size
 	var player_rect: Rect2 = Rect2(col_shape.global_position - (hitbox_size * 0.5), hitbox_size)
 	
-	#cell rect
+	#rect2
 	var tile_size: Vector2 = Vector2(soil.tile_set.tile_size)
 	var cell_local_pos: Vector2 = soil.map_to_local(cell) - (tile_size * 0.5)
 	var cell_rect: Rect2 = Rect2(soil.to_global(cell_local_pos), tile_size)
@@ -58,18 +57,36 @@ func check_player_collision(cell: Vector2i) -> bool:
 	return not cell_rect.intersects(player_rect)
 
 func can_plant(cell: Vector2i) -> bool:
-	return soil.get_cell_source_id(cell) == 1 and not crops.has(cell) and check_player_collision(cell)
+	var player_col: CollisionShape2D = player.get_node("CollisionShape2D")
+	return soil.get_cell_source_id(cell) == 1 and not crops.has(cell) and check_collision(cell, player_col)#and enemies_flag
 
 func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	if not can_plant(cell):
 		return false
 	var crop: Crop = crop_scene.instantiate() as Crop
+	crop.cell = cell
+	crop.add_to_group("crop")
 	crops_root.add_child(crop)
 	crop.global_position = soil.to_global(soil.map_to_local(cell)) + crop_data.offset
-	crop.z_index = 2;
 	crop.setup(crop_data)
 	crops[cell] = crop
+	
+	crop.destroyed.connect(_remove_crop.bind(cell))
+	var pf := get_tree().get_first_node_in_group("pathfinder") as GridPathfinder
+	if pf:
+		pf.set_blocked(cell, true)
+	
 	return true
+
+func _remove_crop(cell: Vector2i) -> void:
+	var crop: Crop = crops.get(cell)
+	if crop == null:
+		return
+	crops.erase(cell)
+	crop.queue_free()
+	var pf := get_tree().get_first_node_in_group("pathfinder") as GridPathfinder
+	if pf:
+		pf.set_blocked(cell, false)
 
 ## returns the crop's data if it can be harvested right now, otherwise null
 func get_harvestable(cell: Vector2i) -> CropData:
@@ -83,8 +100,7 @@ func harvest(cell: Vector2i) -> void:
 	if crop == null:
 		return
 	if not crop.harvest(): # one-time crop or out of harvests
-		crop.queue_free()
-		crops.erase(cell)
+		_remove_crop(cell)
 		
 func nearest_harvestable(center: Vector2i, radius: float) -> Vector2i:
 	var best := NO_CELL

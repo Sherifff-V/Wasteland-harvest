@@ -3,22 +3,20 @@ class_name Player extends CharacterBody2D
 @onready var input_component: InputComponent = $InputComponent
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
-
-
+@onready var ui_comp: UIComponent = $UIComponent
 
 @export var seed: SeedItem
 @export var hoe: ItemData
 
 #хп
-@onready var hp_label: Label = get_tree().current_scene.get_node("UI/HealthContainer/HealthLabel")
 @onready var hp_sys = $HealthSystem
 
 func _ready() -> void:
 	input_component.debug_checkinventorysig.connect(checkInventory)
 	
 	#хп
-	hp_sys.hp_changed.connect(update_hp_lab)
-	update_hp_lab(hp_sys.hp, hp_sys.maxhp)
+	hp_sys.hp_changed.connect(_on_hp_changed)
+	ui_comp.update_hp_lab(hp_sys.hp, hp_sys.maxhp)
 	
 	
 func checkInventory() -> void: # debug only
@@ -31,11 +29,21 @@ func checkInventory() -> void: # debug only
 		print("selected item name: ", selected_item.display_name, ", amount: ", inventory_comp.inventory.count(selected_item))
 	
 
-	
-	
-#ф-ия обновления плашки хп
-func update_hp_lab(hp  : int, maxhp : int) -> void:
-	hp_label.text = "HP: %d/%d" % [hp, maxhp]
+func take_damage(amount: int) -> void:
+	hp_sys.take_damage(amount)
+
+func _on_hp_changed(new_hp: int) -> void:
+	ui_comp.update_hp_lab(new_hp, hp_sys.maxhp)
+
+func collect(item_id: StringName, amount: int) -> int:
+	var item: ItemData = ItemDatabase.create_item(item_id)
+	var left := inventory_comp.inventory.add(item, amount)
+	var got := amount - left
+	if got > 0:
+		Messages.post("+%d %s" % [got, item.display_name])
+	if left > 0:
+		Messages.post("Inventory full", Color.ORANGE_RED, 2.0)
+	return left
 
 func _physics_process(delta: float) -> void:
 	if hp_sys.isDead: #прекращение движения при смерти

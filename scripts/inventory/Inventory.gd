@@ -14,7 +14,7 @@ func add(item: ItemData, amount: int = 1) -> int:
 	for i in slots.size():
 		var s := slots[i]
 		
-		if s.item == item and s.amount < item.max_stack:
+		if not s.is_empty() and s.item.same_as(item) and s.amount < item.max_stack:
 			var moved := mini(amount, item.max_stack - s.amount)
 			s.amount += moved
 			amount -= moved
@@ -45,7 +45,7 @@ func can_add(item: ItemData, amount: int = 1) -> bool:
 	for s in slots:
 		if s.is_empty():
 			space += item.max_stack
-		elif s.item == item:
+		elif s.item.same_as(item):
 			space += item.max_stack - s.amount
 	return space >= amount
 
@@ -79,7 +79,8 @@ func count(item: ItemData) -> int:
 	var total := 0
 	
 	for s in slots:
-		if s.item == item: total += s.amount
+		if not s.is_empty() and s.item.same_as(item):
+			total += s.amount
 		
 	return total
 
@@ -91,7 +92,9 @@ func remove(item: ItemData, amount: int = 1) -> bool:
 	for i in slots.size():
 		var s := slots[i]
 		
-		if s.item != item: continue
+		if s.is_empty() or not s.item.same_as(item):
+			continue
+
 		
 		var taken := mini(amount, s.amount)
 		s.amount -= taken

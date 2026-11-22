@@ -21,7 +21,12 @@ func interact(cell: Vector2i, item: ItemData) -> void:
 			
 			if crop and inv.can_add(crop.harvest_item, crop.harvest_amount):
 				farm.harvest(cell)
-				inv.add(crop.harvest_item, crop.harvest_amount)
+				if crop.current_stage <= crop.harvest_stage - 1:
+					ItemPickup.spawn(get_tree(), crop.harvest_item.id, crop.harvest_amount, selector.cell_to_world(cell))
+				else:
+					var seed: ItemData = ItemDatabase.create_item(crop.seed_item_id)
+					ItemPickup.spawn(get_tree(), seed.id, crop.harvest_amount, selector.cell_to_world(cell))
+
 	
 	elif item.id == "hoe":
 		if not farm.can_plant(cell):

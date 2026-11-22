@@ -1,13 +1,19 @@
 class_name CropData extends Resource
 
+var current_stage: int = 0;
+
 @export var id: StringName
 @export var stage_growth_time: float = 1.0
+@export var max_health: int = 3
 @export var stage_textures: Array[Texture2D]
 @export var offset: Vector2 = Vector2(0, 0)
 
 @export_group("Harvest")
 @export var harvest_item: ItemData
+@export var seed_item_id: StringName
 @export var harvest_amount: int = 1
+@export var seed_amount: int = 1
+@export var harvest_stage: int = 4 # count from 1
 
 @export_group("Regrowing")
 @export var regrows := false

@@ -12,6 +12,7 @@ signal cell_selected(cell: Vector2i)
 @onready var usedRect = soil_layer.get_used_rect()
 @onready var grid_origin = usedRect.position
 @onready var player: Player = get_parent()
+@onready var select_anim: AnimatedSprite2D = preview_layer.get_node("SelectedAnim")
 
 var last_preview_pos: Vector2i = Vector2i(-9999, -9999)
 var selected_cell: Vector2i
@@ -21,6 +22,9 @@ func _ready() -> void:
 	input.interact_pressed.connect(select_nearest)
 	input.mouse_hovering.connect(hovering_selection)
 	inventory_comp.selected_changed.connect(selection_clear)
+	
+	#select_anim.visible = false
+	#select_anim.animation_finished.connect(select_anim.hide)
 
 func hovering_selection(tile: Vector2i) -> void:
 	if tile != last_preview_pos:
@@ -36,7 +40,7 @@ func select_pos(pos: Vector2) -> void:
 	var item = inventory_comp.get_selected().item
 	
 	if item != null and in_placeable_distance(grid_pos):
-		selected_cell = grid_pos
+		
 		cell_selected.emit(grid_pos, item)
 		update_selection(grid_pos, item)
 
@@ -54,7 +58,8 @@ func in_placeable_distance(tile_pos: Vector2i) -> bool:
 
 func selection_clear(index: int) -> void:
 	preview_layer.clear()
-		
+	update_selection(last_preview_pos, inventory_comp.get_selected().item)
+	
 	last_preview_pos = Vector2i(-9999, -9999)
 	
 func update_selection(tile: Vector2i, item: ItemData) -> void:
@@ -69,7 +74,14 @@ func update_selection(tile: Vector2i, item: ItemData) -> void:
 				preview_layer.set_cell(tile, 0, Vector2i(0, 0))
 			else:
 				preview_layer.set_cell(tile, 1, Vector2i(0, 0))
-	
+
+func play_select_anim(tile: Vector2i) -> void: #later maybe
+		if farm.can_dig(tile) or farm.can_plant(tile):
+			select_anim.global_position = cell_to_world(tile) + Vector2(0, -9.5)
+			select_anim.frame = 0
+			select_anim.visible = true
+			select_anim.play()
+
 func world_to_cell(global_pos: Vector2) -> Vector2:
 	var cell: Vector2i = soil_layer.local_to_map(soil_layer.to_local(global_pos));
 	return Vector2(cell.x, cell.y);
