@@ -18,3 +18,4 @@ offset = Vector2(0, -9)
 harvest_item = ExtResource("1_7aeml")
 seed_item_id = &"cucumber_seed"
 harvest_amount = 2
+seed_amount = 3

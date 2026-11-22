@@ -16,7 +16,7 @@ func has_crop(cell: Vector2i) -> bool:
 	return crops.has(cell)
 
 func can_dig(cell: Vector2i) -> bool:
-	return diggable.get_cell_source_id(cell) != -1 and soil.get_cell_source_id(cell) != 1
+	return diggable.get_cell_source_id(cell) != -1 and soil.get_cell_source_id(cell) != 1 and ground.get_cell_source_id(cell) != -1
 
 # returns true if successful
 func dig_dirt(cell: Vector2i) -> bool:
@@ -58,16 +58,6 @@ func check_collision(cell: Vector2i, col_shape: CollisionShape2D) -> bool:
 
 func can_plant(cell: Vector2i) -> bool:
 	var player_col: CollisionShape2D = player.get_node("CollisionShape2D")
-	
-	#var enemies_flag: bool = true
-	#
-	#if enemies_root:
-		#var enemies := enemies_root.get_children()
-		#
-		#for enemy in enemies:
-			#if not check_collision(cell, enemy.get_node("CollisionShape2D")):
-				#enemies_flag = false
-	
 	return soil.get_cell_source_id(cell) == 1 and not crops.has(cell) and check_collision(cell, player_col)#and enemies_flag
 
 func plant(cell: Vector2i, crop_data: CropData) -> bool:

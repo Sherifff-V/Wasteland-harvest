@@ -19,6 +19,7 @@ config/icon="uid://cxmwkvvh2vkvf"
 
 GameClock="*uid://bjrhoq7cec0vy"
 ItemDatabase="*uid://68pd241j7eeh"
+Messages="*uid://cg3edqd1wbtik"
 
 [display]
 

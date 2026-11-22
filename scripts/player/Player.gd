@@ -35,6 +35,16 @@ func take_damage(amount: int) -> void:
 func _on_hp_changed(new_hp: int) -> void:
 	ui_comp.update_hp_lab(new_hp, hp_sys.maxhp)
 
+func collect(item_id: StringName, amount: int) -> int:
+	var item: ItemData = ItemDatabase.create_item(item_id)
+	var left := inventory_comp.inventory.add(item, amount)
+	var got := amount - left
+	if got > 0:
+		Messages.post("+%d %s" % [got, item.display_name])
+	if left > 0:
+		Messages.post("Inventory full", Color.ORANGE_RED, 2.0)
+	return left
+
 func _physics_process(delta: float) -> void:
 	if hp_sys.isDead: #прекращение движения при смерти
 		velocity = Vector2.ZERO

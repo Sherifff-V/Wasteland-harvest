@@ -26,7 +26,9 @@ func _load_items_from_folder(path: String) -> void:
 		file_name = dir.get_next()
 
 func create_item(id: StringName) -> ItemData:
+	if _items.is_empty():
+		_load_items_from_folder("res://data/items")
 	if _items.has(id):
-		return _items[id]
-	push_warning("ItemDatabase: item id not found: " + str(id))
+		return _items[id].duplicate()
+	push_warning("ItemDatabase: item id not found: '" + str(id) + "'")
 	return null

@@ -12,6 +12,7 @@ var current_stage: int = 0;
 @export var harvest_item: ItemData
 @export var seed_item_id: StringName
 @export var harvest_amount: int = 1
+@export var seed_amount: int = 1
 @export var harvest_stage: int = 4 # count from 1
 
 @export_group("Regrowing")

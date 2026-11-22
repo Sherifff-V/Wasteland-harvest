@@ -7,15 +7,22 @@
 [ext_resource type="Texture2D" uid="uid://8ihpuxnn6tc6" path="res://sprites/ground/grass_tiles.png" id="3_jscy8"]
 [ext_resource type="Script" uid="uid://ds247r3kbrh4k" path="res://scripts/player/InputComponent.gd" id="3_tbgi4"]
 [ext_resource type="Script" uid="uid://c3ce18u7165f" path="res://scripts/player/MovementComponent.gd" id="4_tefeu"]
-[ext_resource type="Texture2D" uid="uid://csalwr7fykes0" path="res://sprites/ground/selection2.png" id="4_trceg"]
+[ext_resource type="Texture2D" uid="uid://csalwr7fykes0" path="res://sprites/ground/selection/selection2.png" id="4_trceg"]
 [ext_resource type="Texture2D" uid="uid://bm2xtpgdjtk3t" path="res://sprites/check_mark.png" id="5_pm3ni"]
 [ext_resource type="Script" uid="uid://d31227tthh0c7" path="res://scripts/farm/PlotSelectComponent.gd" id="5_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://6j8ktp0chy22" path="res://sprites/ground/selection2_confirm.png" id="5_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://6j8ktp0chy22" path="res://sprites/ground/selection/selection2_confirm.png" id="5_ya4ey"]
 [ext_resource type="Script" uid="uid://cyyatj7cttkrh" path="res://scripts/inventory/InventoryComponent.gd" id="6_o6xl0"]
 [ext_resource type="Resource" uid="uid://cjxm30isefoj4" path="res://data/items/Cucumber_seed.tres" id="7_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://kfwgwytfo5bd" path="res://sprites/ground/soil_tile1.png" id="7_og1vs"]
+[ext_resource type="Texture2D" uid="uid://c5etnims8fjst" path="res://sprites/ground/selection/selection_confirm_anim1.png" id="8_pibwh"]
+[ext_resource type="Texture2D" uid="uid://c4k7uwa7xccrc" path="res://sprites/ground/selection/selection_confirm_anim2.png" id="9_c6pm6"]
+[ext_resource type="Texture2D" uid="uid://bpy18hay56p0h" path="res://sprites/ground/selection/selection_confirm_anim3.png" id="10_5he1u"]
+[ext_resource type="Texture2D" uid="uid://b1d2xxjcacbcj" path="res://sprites/ground/selection/selection_confirm_anim4.png" id="11_5poiv"]
+[ext_resource type="Texture2D" uid="uid://cxb45jcye082e" path="res://sprites/ground/selection/selection_confirm_anim5.png" id="12_2cjbq"]
 [ext_resource type="Script" uid="uid://c74kh7x36oxw6" path="res://scripts/farm/PlantComponent.gd" id="12_jkv2x"]
 [ext_resource type="Script" uid="uid://cxd8ibgsxd4o5" path="res://scripts/farm/Farm.gd" id="13_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://dxq7a65j72ft" path="res://sprites/ground/selection/selection_confirm_anim6.png" id="13_chjal"]
+[ext_resource type="Texture2D" uid="uid://cb0qkdw1iobwm" path="res://sprites/ground/selection/selection_confirm_anim7.png" id="14_cjqg0"]
 [ext_resource type="Script" uid="uid://dhg486wxkevyl" path="res://scripts/ui/UIComponent.gd" id="14_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dq0ygdxje4js5" path="res://scenes/crop.tscn" id="14_jkv2x"]
 [ext_resource type="Resource" uid="uid://ct4sh0w1cmus5" path="res://data/items/Hoe.tres" id="14_vxglm"]
@@ -31,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://bpsl2xywmu2d5" path="res://sprites/slot_active.png" id="24_og1vs"]
 [ext_resource type="FontFile" uid="uid://cd6qem26iwgdh" path="res://data/fonts/Silkscreen-Bold.ttf" id="25_og1vs"]
 [ext_resource type="FontFile" uid="uid://ik1waoi1obal" path="res://data/fonts/Silkscreen-Regular.ttf" id="25_vxglm"]
+[ext_resource type="Script" uid="uid://bi1jrtk66uy8x" path="res://scripts/ui/MessageLog.gd" id="39_c6pm6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
 texture = ExtResource("1_choun")
@@ -486,6 +494,35 @@ tile_size = Vector2i(18, 18)
 sources/0 = SubResource("TileSetAtlasSource_muem4")
 sources/1 = SubResource("TileSetAtlasSource_eb6dy")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_icqri"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("8_pibwh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_c6pm6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_5he1u")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_5poiv")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_2cjbq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_chjal")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_cjqg0")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
 size = Vector2(18, 8)
 
@@ -519,6 +556,15 @@ tile_set = SubResource("TileSet_icqri")
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_y2l6j")
 tile_set = SubResource("TileSet_o6xl0")
+
+[node name="SelectedAnim" type="AnimatedSprite2D" parent="World/SelectionPreview" unique_id=1386218274]
+visible = false
+sprite_frames = SubResource("SpriteFrames_icqri")
+frame = 3
+frame_progress = 0.8815864
+speed_scale = 2.0
+
+[node name="Drops" type="Node2D" parent="World" unique_id=1313146701 groups=["drops"]]
 
 [node name="Entities" type="Node2D" parent="World" unique_id=1470660227]
 y_sort_enabled = true
@@ -1000,5 +1046,16 @@ theme_override_font_sizes/font_size = 24
 text = "HP: 100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MessageLog" type="VBoxContainer" parent="UI" unique_id=928073626]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -238.0
+offset_right = 273.0
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 6
+script = ExtResource("39_c6pm6")
 
 [node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]
