@@ -38,6 +38,7 @@
 [ext_resource type="Texture2D" uid="uid://bpsl2xywmu2d5" path="res://sprites/slot_active.png" id="24_og1vs"]
 [ext_resource type="FontFile" uid="uid://cd6qem26iwgdh" path="res://data/fonts/Silkscreen-Bold.ttf" id="25_og1vs"]
 [ext_resource type="FontFile" uid="uid://ik1waoi1obal" path="res://data/fonts/Silkscreen-Regular.ttf" id="25_vxglm"]
+[ext_resource type="Script" uid="uid://dhapsyuloh37q" path="res://scripts/player/ShootingComponent.gd" id="26_5he1u"]
 [ext_resource type="Script" uid="uid://bi1jrtk66uy8x" path="res://scripts/ui/MessageLog.gd" id="39_c6pm6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
@@ -623,6 +624,9 @@ inv_comp = NodePath("../InventoryComponent")
 [node name="HealthSystem" type="Node" parent="World/Entities/Player" unique_id=921552606 node_paths=PackedStringArray("sprite")]
 script = ExtResource("18_2wyq8")
 sprite = NodePath("../Дед")
+
+[node name="ShootingComponent" type="Node" parent="World/Entities/Player" unique_id=1421861856]
+script = ExtResource("26_5he1u")
 
 [node name="Crops" type="Node2D" parent="World/Entities" unique_id=720615601]
 
