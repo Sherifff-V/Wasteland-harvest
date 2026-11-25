@@ -1,13 +1,1334 @@
-[gd_scene format=3 uid="uid://brovn6bd083te"]
+[gd_scene format=4 uid="uid://brovn6bd083te"]
 
-[ext_resource type="Script" uid="uid://bpvbov55xbx18" path="res://scripts/combat/Bullet.gd" id="1_o5qli"]
+[ext_resource type="Texture2D" uid="uid://cl6hu80uimv47" path="res://sprites/ground/grass1.png" id="1_choun"]
+[ext_resource type="Script" uid="uid://oo7iutuif107" path="res://scripts/player/Player.gd" id="1_jyhfs"]
+[ext_resource type="Texture2D" uid="uid://cxmwkvvh2vkvf" path="res://sprites/дед .png" id="2_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://c78h8lens51s7" path="res://sprites/ground/grass2.png" id="2_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://8ihpuxnn6tc6" path="res://sprites/ground/grass_tiles.png" id="3_jscy8"]
+[ext_resource type="Script" uid="uid://ds247r3kbrh4k" path="res://scripts/player/InputComponent.gd" id="3_tbgi4"]
+[ext_resource type="Script" uid="uid://c3ce18u7165f" path="res://scripts/player/MovementComponent.gd" id="4_tefeu"]
+[ext_resource type="Texture2D" uid="uid://csalwr7fykes0" path="res://sprites/ground/selection/selection2.png" id="4_trceg"]
+[ext_resource type="Texture2D" uid="uid://bm2xtpgdjtk3t" path="res://sprites/check_mark.png" id="5_pm3ni"]
+[ext_resource type="Script" uid="uid://d31227tthh0c7" path="res://scripts/farm/PlotSelectComponent.gd" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://6j8ktp0chy22" path="res://sprites/ground/selection/selection2_confirm.png" id="5_ya4ey"]
+[ext_resource type="Script" uid="uid://cyyatj7cttkrh" path="res://scripts/inventory/InventoryComponent.gd" id="6_o6xl0"]
+[ext_resource type="Resource" uid="uid://cjxm30isefoj4" path="res://data/items/Cucumber_seed.tres" id="7_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://kfwgwytfo5bd" path="res://sprites/ground/soil_tile1.png" id="7_og1vs"]
+[ext_resource type="Texture2D" uid="uid://c5etnims8fjst" path="res://sprites/ground/selection/selection_confirm_anim1.png" id="8_pibwh"]
+[ext_resource type="Texture2D" uid="uid://c4k7uwa7xccrc" path="res://sprites/ground/selection/selection_confirm_anim2.png" id="9_c6pm6"]
+[ext_resource type="Texture2D" uid="uid://bpy18hay56p0h" path="res://sprites/ground/selection/selection_confirm_anim3.png" id="10_5he1u"]
+[ext_resource type="Texture2D" uid="uid://b1d2xxjcacbcj" path="res://sprites/ground/selection/selection_confirm_anim4.png" id="11_5poiv"]
+[ext_resource type="Texture2D" uid="uid://cxb45jcye082e" path="res://sprites/ground/selection/selection_confirm_anim5.png" id="12_2cjbq"]
+[ext_resource type="Script" uid="uid://c74kh7x36oxw6" path="res://scripts/farm/PlantComponent.gd" id="12_jkv2x"]
+[ext_resource type="Script" uid="uid://cxd8ibgsxd4o5" path="res://scripts/farm/Farm.gd" id="13_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://dxq7a65j72ft" path="res://sprites/ground/selection/selection_confirm_anim6.png" id="13_chjal"]
+[ext_resource type="Texture2D" uid="uid://cb0qkdw1iobwm" path="res://sprites/ground/selection/selection_confirm_anim7.png" id="14_cjqg0"]
+[ext_resource type="Script" uid="uid://dhg486wxkevyl" path="res://scripts/ui/UIComponent.gd" id="14_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://dq0ygdxje4js5" path="res://scenes/crop.tscn" id="14_jkv2x"]
+[ext_resource type="Resource" uid="uid://ct4sh0w1cmus5" path="res://data/items/Hoe.tres" id="14_vxglm"]
+[ext_resource type="Script" uid="uid://ckevbdcpdemh3" path="res://scripts/ui/HarvestPrompt.gd" id="17_muem4"]
+[ext_resource type="Script" uid="uid://dtldiom4kfncw" path="res://scripts/systems/HP_Script.gd" id="18_2wyq8"]
+[ext_resource type="Script" uid="uid://de1v3xebefjbb" path="res://scripts/enemy/EnemySpawner.gd" id="20_2f3dj"]
+[ext_resource type="Script" uid="uid://cnapctgtndvlw" path="res://scripts/systems/GridPathfinder.gd" id="20_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://ma1bhhjkf126" path="res://scenes/enemy.tscn" id="21_fv21b"]
+[ext_resource type="Script" uid="uid://pvx4ixj6r2cp" path="res://data/enemies/EnemyData.gd" id="21_yq6so"]
+[ext_resource type="Texture2D" uid="uid://c1s0o2484c6cj" path="res://sprites/slot_inactive.png" id="22_y6deb"]
+[ext_resource type="Resource" uid="uid://bjrjuwxgkvnsy" path="res://data/enemies/Zombie.tres" id="23_fv21b"]
+[ext_resource type="Script" uid="uid://cib5n2o2gffi4" path="res://scripts/ui/InventorySlot_UI.gd" id="23_pm3ni"]
+[ext_resource type="Texture2D" uid="uid://bpsl2xywmu2d5" path="res://sprites/slot_active.png" id="24_og1vs"]
+[ext_resource type="FontFile" uid="uid://cd6qem26iwgdh" path="res://data/fonts/Silkscreen-Bold.ttf" id="25_og1vs"]
+[ext_resource type="FontFile" uid="uid://ik1waoi1obal" path="res://data/fonts/Silkscreen-Regular.ttf" id="25_vxglm"]
+[ext_resource type="Script" uid="uid://dhapsyuloh37q" path="res://scripts/player/ShootingComponent.gd" id="26_5he1u"]
+[ext_resource type="Script" uid="uid://bi1jrtk66uy8x" path="res://scripts/ui/MessageLog.gd" id="39_c6pm6"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b1lj4"]
-radius = 8.0
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a8y0u"]
+texture = ExtResource("1_choun")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/terrain_set = 0
 
-[node name="Bullet" type="Area2D" unique_id=883385257]
-script = ExtResource("1_o5qli")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jkv2x"]
+texture = ExtResource("2_ya4ey")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/terrain_set = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1293458564]
-shape = SubResource("CircleShape2D_b1lj4")
-debug_color = Color(0.6289647, 0.5305584, 0, 0.41960785)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pm3ni"]
+texture = ExtResource("3_jscy8")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/right_side = 0
+3:0/0/terrains_peering_bit/bottom_side = 0
+3:0/0/terrains_peering_bit/bottom_left_corner = 0
+3:0/0/terrains_peering_bit/left_side = 0
+3:0/0/terrains_peering_bit/top_left_corner = 0
+3:0/0/terrains_peering_bit/top_side = 0
+3:0/0/terrains_peering_bit/top_right_corner = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 0
+4:0/0/terrains_peering_bit/right_side = 0
+4:0/0/terrains_peering_bit/bottom_right_corner = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+4:0/0/terrains_peering_bit/left_side = 0
+4:0/0/terrains_peering_bit/top_left_corner = 0
+4:0/0/terrains_peering_bit/top_side = 0
+4:0/0/terrains_peering_bit/top_right_corner = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/terrains_peering_bit/right_side = 0
+5:0/0/terrains_peering_bit/bottom_right_corner = 0
+5:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0/terrains_peering_bit/left_side = 0
+5:0/0/terrains_peering_bit/top_left_corner = 0
+5:0/0/terrains_peering_bit/top_side = 0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 0
+6:0/0/terrains_peering_bit/right_side = 0
+6:0/0/terrains_peering_bit/bottom_side = 0
+6:0/0/terrains_peering_bit/bottom_left_corner = 0
+6:0/0/terrains_peering_bit/left_side = 0
+6:0/0/terrains_peering_bit/top_side = 0
+6:0/0/terrains_peering_bit/top_right_corner = 0
+7:0/0 = 0
+7:0/0/terrain_set = 0
+7:0/0/terrain = 0
+7:0/0/terrains_peering_bit/top_side = 0
+8:0/0 = 0
+8:0/0/terrain_set = 0
+8:0/0/terrain = 0
+8:0/0/terrains_peering_bit/right_side = 0
+9:0/0 = 0
+9:0/0/terrain_set = 0
+9:0/0/terrain = 0
+9:0/0/terrains_peering_bit/bottom_side = 0
+10:0/0 = 0
+10:0/0/terrain_set = 0
+10:0/0/terrain = 0
+10:0/0/terrains_peering_bit/left_side = 0
+11:0/0 = 0
+11:0/0/terrain_set = 0
+11:0/0/terrain = 0
+11:0/0/terrains_peering_bit/bottom_side = 0
+11:0/0/terrains_peering_bit/top_side = 0
+12:0/0 = 0
+12:0/0/terrain_set = 0
+12:0/0/terrain = 0
+12:0/0/terrains_peering_bit/right_side = 0
+12:0/0/terrains_peering_bit/left_side = 0
+13:0/0 = 0
+13:0/0/terrain_set = 0
+13:0/0/terrain = 0
+13:0/0/terrains_peering_bit/right_side = 0
+13:0/0/terrains_peering_bit/top_side = 0
+14:0/0 = 0
+14:0/0/terrain_set = 0
+14:0/0/terrain = 0
+14:0/0/terrains_peering_bit/right_side = 0
+14:0/0/terrains_peering_bit/bottom_side = 0
+15:0/0 = 0
+15:0/0/terrain_set = 0
+15:0/0/terrain = 0
+15:0/0/terrains_peering_bit/bottom_side = 0
+15:0/0/terrains_peering_bit/left_side = 0
+16:0/0 = 0
+16:0/0/terrain_set = 0
+16:0/0/terrain = 0
+16:0/0/terrains_peering_bit/left_side = 0
+16:0/0/terrains_peering_bit/top_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/bottom_right_corner = 0
+1:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0/terrains_peering_bit/bottom_left_corner = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_left_corner = 0
+1:1/0/terrains_peering_bit/top_side = 0
+1:1/0/terrains_peering_bit/top_right_corner = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/right_side = 0
+3:1/0/terrains_peering_bit/bottom_right_corner = 0
+3:1/0/terrains_peering_bit/bottom_side = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/left_side = 0
+3:1/0/terrains_peering_bit/top_left_corner = 0
+3:1/0/terrains_peering_bit/top_side = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+4:1/0/terrain = 0
+4:1/0/terrains_peering_bit/right_side = 0
+4:1/0/terrains_peering_bit/bottom_right_corner = 0
+4:1/0/terrains_peering_bit/bottom_side = 0
+4:1/0/terrains_peering_bit/bottom_left_corner = 0
+4:1/0/terrains_peering_bit/left_side = 0
+4:1/0/terrains_peering_bit/top_side = 0
+4:1/0/terrains_peering_bit/top_right_corner = 0
+5:1/0 = 0
+5:1/0/terrain_set = 0
+5:1/0/terrain = 0
+5:1/0/terrains_peering_bit/right_side = 0
+5:1/0/terrains_peering_bit/left_side = 0
+5:1/0/terrains_peering_bit/top_side = 0
+6:1/0 = 0
+6:1/0/terrain_set = 0
+6:1/0/terrain = 0
+6:1/0/terrains_peering_bit/right_side = 0
+6:1/0/terrains_peering_bit/bottom_side = 0
+6:1/0/terrains_peering_bit/top_side = 0
+7:1/0 = 0
+7:1/0/terrain_set = 0
+7:1/0/terrain = 0
+7:1/0/terrains_peering_bit/right_side = 0
+7:1/0/terrains_peering_bit/bottom_side = 0
+7:1/0/terrains_peering_bit/left_side = 0
+8:1/0 = 0
+8:1/0/terrain_set = 0
+8:1/0/terrain = 0
+8:1/0/terrains_peering_bit/bottom_side = 0
+8:1/0/terrains_peering_bit/left_side = 0
+8:1/0/terrains_peering_bit/top_side = 0
+9:1/0 = 0
+9:1/0/terrain_set = 0
+9:1/0/terrain = 0
+9:1/0/terrains_peering_bit/right_side = 0
+9:1/0/terrains_peering_bit/left_side = 0
+9:1/0/terrains_peering_bit/top_left_corner = 0
+9:1/0/terrains_peering_bit/top_side = 0
+10:1/0 = 0
+10:1/0/terrain_set = 0
+10:1/0/terrain = 0
+10:1/0/terrains_peering_bit/right_side = 0
+10:1/0/terrains_peering_bit/bottom_side = 0
+10:1/0/terrains_peering_bit/top_side = 0
+10:1/0/terrains_peering_bit/top_right_corner = 0
+11:1/0 = 0
+11:1/0/terrain_set = 0
+11:1/0/terrain = 0
+11:1/0/terrains_peering_bit/right_side = 0
+11:1/0/terrains_peering_bit/bottom_right_corner = 0
+11:1/0/terrains_peering_bit/bottom_side = 0
+11:1/0/terrains_peering_bit/left_side = 0
+12:1/0 = 0
+12:1/0/terrain_set = 0
+12:1/0/terrain = 0
+12:1/0/terrains_peering_bit/bottom_side = 0
+12:1/0/terrains_peering_bit/bottom_left_corner = 0
+12:1/0/terrains_peering_bit/left_side = 0
+12:1/0/terrains_peering_bit/top_side = 0
+13:1/0 = 0
+13:1/0/terrain_set = 0
+13:1/0/terrain = 0
+13:1/0/terrains_peering_bit/right_side = 0
+13:1/0/terrains_peering_bit/left_side = 0
+13:1/0/terrains_peering_bit/top_side = 0
+13:1/0/terrains_peering_bit/top_right_corner = 0
+14:1/0 = 0
+14:1/0/terrain_set = 0
+14:1/0/terrain = 0
+14:1/0/terrains_peering_bit/right_side = 0
+14:1/0/terrains_peering_bit/bottom_right_corner = 0
+14:1/0/terrains_peering_bit/bottom_side = 0
+14:1/0/terrains_peering_bit/top_side = 0
+15:1/0 = 0
+15:1/0/terrain_set = 0
+15:1/0/terrain = 0
+15:1/0/terrains_peering_bit/right_side = 0
+15:1/0/terrains_peering_bit/bottom_side = 0
+15:1/0/terrains_peering_bit/bottom_left_corner = 0
+15:1/0/terrains_peering_bit/left_side = 0
+16:1/0 = 0
+16:1/0/terrain_set = 0
+16:1/0/terrain = 0
+16:1/0/terrains_peering_bit/bottom_side = 0
+16:1/0/terrains_peering_bit/left_side = 0
+16:1/0/terrains_peering_bit/top_left_corner = 0
+16:1/0/terrains_peering_bit/top_side = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+3:2/0 = 0
+3:2/0/terrain_set = 0
+3:2/0/terrain = 0
+3:2/0/terrains_peering_bit/right_side = 0
+3:2/0/terrains_peering_bit/bottom_side = 0
+3:2/0/terrains_peering_bit/left_side = 0
+3:2/0/terrains_peering_bit/top_side = 0
+4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/terrain = 0
+5:2/0 = 0
+5:2/0/terrain_set = 0
+5:2/0/terrain = 0
+5:2/0/terrains_peering_bit/right_side = 0
+5:2/0/terrains_peering_bit/bottom_right_corner = 0
+5:2/0/terrains_peering_bit/bottom_side = 0
+5:2/0/terrains_peering_bit/left_side = 0
+5:2/0/terrains_peering_bit/top_side = 0
+6:2/0 = 0
+6:2/0/terrain_set = 0
+6:2/0/terrain = 0
+6:2/0/terrains_peering_bit/right_side = 0
+6:2/0/terrains_peering_bit/bottom_side = 0
+6:2/0/terrains_peering_bit/bottom_left_corner = 0
+6:2/0/terrains_peering_bit/left_side = 0
+6:2/0/terrains_peering_bit/top_side = 0
+7:2/0 = 0
+7:2/0/terrain_set = 0
+7:2/0/terrain = 0
+7:2/0/terrains_peering_bit/right_side = 0
+7:2/0/terrains_peering_bit/bottom_side = 0
+7:2/0/terrains_peering_bit/left_side = 0
+7:2/0/terrains_peering_bit/top_left_corner = 0
+7:2/0/terrains_peering_bit/top_side = 0
+8:2/0 = 0
+8:2/0/terrain_set = 0
+8:2/0/terrain = 0
+8:2/0/terrains_peering_bit/right_side = 0
+8:2/0/terrains_peering_bit/bottom_side = 0
+8:2/0/terrains_peering_bit/left_side = 0
+8:2/0/terrains_peering_bit/top_side = 0
+8:2/0/terrains_peering_bit/top_right_corner = 0
+9:2/0 = 0
+9:2/0/terrain_set = 0
+9:2/0/terrain = 0
+9:2/0/terrains_peering_bit/right_side = 0
+9:2/0/terrains_peering_bit/bottom_side = 0
+9:2/0/terrains_peering_bit/bottom_left_corner = 0
+9:2/0/terrains_peering_bit/left_side = 0
+10:2/0 = 0
+10:2/0/terrain_set = 0
+10:2/0/terrain = 0
+10:2/0/terrains_peering_bit/bottom_side = 0
+10:2/0/terrains_peering_bit/left_side = 0
+10:2/0/terrains_peering_bit/top_left_corner = 0
+10:2/0/terrains_peering_bit/top_side = 0
+11:2/0 = 0
+11:2/0/terrain_set = 0
+11:2/0/terrain = 0
+11:2/0/terrains_peering_bit/right_side = 0
+11:2/0/terrains_peering_bit/left_side = 0
+11:2/0/terrains_peering_bit/top_side = 0
+11:2/0/terrains_peering_bit/top_right_corner = 0
+12:2/0 = 0
+12:2/0/terrain_set = 0
+12:2/0/terrain = 0
+12:2/0/terrains_peering_bit/right_side = 0
+12:2/0/terrains_peering_bit/bottom_right_corner = 0
+12:2/0/terrains_peering_bit/bottom_side = 0
+12:2/0/terrains_peering_bit/top_side = 0
+13:2/0 = 0
+13:2/0/terrain_set = 0
+13:2/0/terrain = 0
+13:2/0/terrains_peering_bit/right_side = 0
+13:2/0/terrains_peering_bit/bottom_right_corner = 0
+13:2/0/terrains_peering_bit/bottom_side = 0
+13:2/0/terrains_peering_bit/left_side = 0
+14:2/0 = 0
+14:2/0/terrain_set = 0
+14:2/0/terrain = 0
+14:2/0/terrains_peering_bit/bottom_side = 0
+14:2/0/terrains_peering_bit/bottom_left_corner = 0
+14:2/0/terrains_peering_bit/left_side = 0
+14:2/0/terrains_peering_bit/top_side = 0
+15:2/0 = 0
+15:2/0/terrain_set = 0
+15:2/0/terrain = 0
+15:2/0/terrains_peering_bit/right_side = 0
+15:2/0/terrains_peering_bit/left_side = 0
+15:2/0/terrains_peering_bit/top_left_corner = 0
+15:2/0/terrains_peering_bit/top_side = 0
+16:2/0 = 0
+16:2/0/terrain_set = 0
+16:2/0/terrain = 0
+16:2/0/terrains_peering_bit/right_side = 0
+16:2/0/terrains_peering_bit/bottom_side = 0
+16:2/0/terrains_peering_bit/top_side = 0
+16:2/0/terrains_peering_bit/top_right_corner = 0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 0
+3:3/0/terrains_peering_bit/right_side = 0
+3:3/0/terrains_peering_bit/bottom_right_corner = 0
+3:3/0/terrains_peering_bit/bottom_side = 0
+3:3/0/terrains_peering_bit/bottom_left_corner = 0
+3:3/0/terrains_peering_bit/left_side = 0
+3:3/0/terrains_peering_bit/top_side = 0
+4:3/0 = 0
+4:3/0/terrain_set = 0
+4:3/0/terrain = 0
+4:3/0/terrains_peering_bit/right_side = 0
+4:3/0/terrains_peering_bit/bottom_side = 0
+4:3/0/terrains_peering_bit/bottom_left_corner = 0
+4:3/0/terrains_peering_bit/left_side = 0
+4:3/0/terrains_peering_bit/top_left_corner = 0
+4:3/0/terrains_peering_bit/top_side = 0
+5:3/0 = 0
+5:3/0/terrain_set = 0
+5:3/0/terrain = 0
+5:3/0/terrains_peering_bit/right_side = 0
+5:3/0/terrains_peering_bit/bottom_side = 0
+5:3/0/terrains_peering_bit/left_side = 0
+5:3/0/terrains_peering_bit/top_left_corner = 0
+5:3/0/terrains_peering_bit/top_side = 0
+5:3/0/terrains_peering_bit/top_right_corner = 0
+6:3/0 = 0
+6:3/0/terrain_set = 0
+6:3/0/terrain = 0
+6:3/0/terrains_peering_bit/right_side = 0
+6:3/0/terrains_peering_bit/bottom_right_corner = 0
+6:3/0/terrains_peering_bit/bottom_side = 0
+6:3/0/terrains_peering_bit/left_side = 0
+6:3/0/terrains_peering_bit/top_side = 0
+6:3/0/terrains_peering_bit/top_right_corner = 0
+
+[sub_resource type="TileSet" id="TileSet_tipki"]
+tile_size = Vector2i(18, 18)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Grass 0"
+terrain_set_0/terrain_0/color = Color(0.22745098, 0.62352943, 0.37254903, 1)
+sources/1 = SubResource("TileSetAtlasSource_jkv2x")
+sources/0 = SubResource("TileSetAtlasSource_a8y0u")
+sources/2 = SubResource("TileSetAtlasSource_pm3ni")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yq6so"]
+texture = ExtResource("7_og1vs")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fv21b"]
+texture = ExtResource("7_og1vs")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tbgi4"]
+tile_size = Vector2i(18, 18)
+sources/2 = SubResource("TileSetAtlasSource_fv21b")
+sources/1 = SubResource("TileSetAtlasSource_yq6so")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6deb"]
+texture = ExtResource("5_pm3ni")
+texture_region_size = Vector2i(18, 18)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_icqri"]
+tile_size = Vector2i(18, 18)
+sources/0 = SubResource("TileSetAtlasSource_y6deb")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_y2l6j"]
+light_mode = 1
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_muem4"]
+texture = ExtResource("4_trceg")
+texture_region_size = Vector2i(18, 19)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eb6dy"]
+texture = ExtResource("5_ya4ey")
+texture_region_size = Vector2i(18, 19)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 1)
+
+[sub_resource type="TileSet" id="TileSet_o6xl0"]
+tile_size = Vector2i(18, 18)
+sources/0 = SubResource("TileSetAtlasSource_muem4")
+sources/1 = SubResource("TileSetAtlasSource_eb6dy")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_icqri"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("8_pibwh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_c6pm6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_5he1u")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_5poiv")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_2cjbq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_chjal")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_cjqg0")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
+size = Vector2(18, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icqri"]
+bg_color = Color(0, 0, 0, 0.15686275)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atnei"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Main" type="Node" unique_id=1139472212]
+
+[node name="World" type="Node2D" parent="." unique_id=2040116306]
+
+[node name="Ground" type="TileMapLayer" parent="World" unique_id=260109515]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD//wAAAgABAAEAAAAAAAAAAgABAAEAAAABAAAAAgABAAEAAAACAAAAAgABAAEAAAACAAEAAgABAAEAAAACAAIAAgABAAEAAAABAAIAAgABAAEAAAAAAAIAAgABAAEAAAD//wIAAgABAAEAAAD//wEAAgABAAEAAAAAAAEAAgABAAEAAAABAAEAAgABAAEAAAD/////AgABAAEAAAAAAP//AgABAAEAAAABAP//AgABAAEAAAACAP//AgABAAEAAAADAAAAAgABAAEAAAD///7/AgABAAEAAAAAAP7/AgABAAEAAAABAP7/AgABAAEAAAACAP7/AgABAAEAAAADAP7/AgABAAEAAAADAP//AgABAAEAAAADAAEAAgABAAEAAAADAAIAAgABAAEAAAD//wMAAgABAAEAAAAAAAMAAgABAAEAAAABAAMAAgABAAEAAAACAAMAAgABAAEAAAADAAMAAgABAAEAAAAEAAIAAgABAAEAAAAEAAEAAgABAAEAAAAEAAAAAgABAAEAAAAEAP//AgABAAEAAAAEAP7/AgABAAEAAAAEAAMAAgABAAEAAAAFAAMAAgABAAEAAAAFAAIAAgABAAEAAAAFAAEAAgABAAEAAAAFAAAAAgABAAEAAAAFAP//AgABAAEAAAAFAP7/AgABAAEAAAAFAP3/AgABAAEAAAAEAP3/AgABAAEAAAADAP3/AgABAAEAAAACAP3/AgABAAEAAAABAP3/AgABAAEAAAAAAP3/AgABAAEAAAD///3/AgABAAEAAAD+//3/AgABAAEAAAD+//7/AgABAAEAAAD+////AgABAAEAAAD+/wAAAgABAAEAAAD+/wEAAgABAAEAAAD+/wIAAgABAAEAAAD+/wMAAgABAAEAAAD+/wQAAgABAAEAAAD//wQAAgABAAEAAAAAAAQAAgABAAEAAAABAAQAAgABAAEAAAACAAQAAgABAAEAAAADAAQAAgABAAEAAAAEAAQAAgABAAEAAAAFAAQAAgABAAEAAAAGAP//AgABAAEAAAAHAP//AgABAAEAAAAIAP//AgABAAEAAAAJAP//AgABAAEAAAAKAP//AgABAAEAAAALAP//AgABAAEAAAAMAP//AgABAAEAAAAMAAAAAgABAAEAAAAMAAEAAgABAAEAAAAMAAIAAgABAAEAAAANAAIAAgABAAEAAAANAAMAAgABAAEAAAANAAQAAgABAAEAAAANAAUAAgABAAEAAAANAAYAAgABAAEAAAANAAcAAgABAAEAAAAMAAcAAgABAAEAAAALAAcAAgABAAEAAAAKAAcAAgABAAEAAAAJAAcAAgABAAEAAAAIAAcAAgABAAEAAAAIAAgAAgABAAEAAAAHAAgAAgABAAEAAAAGAAgAAgABAAEAAAAFAAcAAgABAAEAAAAEAAcAAgABAAEAAAADAAcAAgABAAEAAAACAAcAAgABAAEAAAABAAcAAgABAAEAAAAAAAcAAgABAAEAAAD//wcAAgABAAEAAAD//wYAAgABAAEAAAD+/wYAAgABAAEAAAD+/wUAAgABAAEAAAD//wUAAgABAAEAAAAAAAUAAgABAAEAAAABAAUAAgABAAEAAAACAAUAAgABAAEAAAADAAUAAgABAAEAAAAEAAUAAgABAAEAAAAFAAUAAgABAAEAAAAGAAUAAgABAAEAAAAHAAUAAgABAAEAAAAIAAUAAgABAAEAAAAJAAUAAgABAAEAAAAKAAUAAgABAAEAAAALAAUAAgABAAEAAAAMAAUAAgABAAEAAAAMAAYAAgABAAEAAAALAAYAAgABAAEAAAAKAAYAAgABAAEAAAAJAAYAAgABAAEAAAAIAAYAAgABAAEAAAAHAAYAAgABAAEAAAAGAAYAAgABAAEAAAAFAAYAAgABAAEAAAAEAAYAAgABAAEAAAADAAYAAgABAAEAAAACAAYAAgABAAEAAAABAAYAAgABAAEAAAAAAAYAAgABAAEAAAAHAAcAAgABAAEAAAAGAAcAAgABAAEAAAAGAAQAAgABAAEAAAAGAAMAAgABAAEAAAAGAAIAAgABAAEAAAAGAAEAAgABAAEAAAAHAAEAAgABAAEAAAAHAAAAAgABAAEAAAAIAAAAAgABAAEAAAAJAAAAAgABAAEAAAAJAAEAAgABAAEAAAAJAAIAAgABAAEAAAAJAAMAAgABAAEAAAAIAAMAAgABAAEAAAAHAAMAAgABAAEAAAAHAAIAAgABAAEAAAAGAAAAAgABAAEAAAAKAAAAAgABAAEAAAALAAAAAgABAAEAAAALAAEAAgABAAEAAAAKAAEAAgABAAEAAAAIAAEAAgABAAEAAAAKAAIAAgABAAEAAAALAAIAAgABAAEAAAAMAAMAAgABAAEAAAALAAMAAgABAAEAAAAKAAMAAgABAAEAAAAIAAIAAgABAAEAAAAHAAQAAgABAAEAAAAIAAQAAgABAAEAAAAJAAQAAgABAAEAAAAKAAQAAgABAAEAAAALAAQAAgABAAEAAAAMAAQAAgABAAEAAAAFAAgAAgABAAEAAAAEAAgAAgABAAEAAAADAAgAAgABAAEAAAACAAgAAgABAAEAAAABAAgAAgABAAEAAAAAAAgAAgABAAEAAAD//wgAAgABAAEAAAD+/wgAAgABAAEAAAD+/wcAAgABAAEAAAAJAAgAAgABAAEAAAAKAAgAAgABAAEAAAALAAgAAgABAAEAAAANAAgAAgABAAEAAAAMAAgAAgABAAEAAAANAAEAAgABAAEAAAANAAAAAgABAAEAAAANAP//AgABAAEAAADd/+T/AgABAAEAAADe/+T/AgABAAEAAADf/+P/AgABAAEAAADg/+P/AgABAAEAAADh/+P/AgABAAEAAADi/+P/AgABAAEAAADj/+P/AgABAAEAAADk/+P/AgABAAEAAADl/+P/AgABAAEAAADm/+P/AgABAAEAAADn/+P/AgABAAEAAADo/+P/AgABAAEAAADp/+P/AgABAAEAAADq/+P/AgABAAEAAADr/+P/AgABAAEAAADs/+P/AgABAAEAAADt/+P/AgABAAEAAADu/+P/AgABAAEAAADv/+T/AgABAAEAAADw/+T/AgABAAEAAADx/+T/AgABAAEAAADy/+T/AgABAAEAAADz/+T/AgABAAEAAAD0/+T/AgABAAEAAAD1/+T/AgABAAEAAAD2/+T/AgABAAEAAAD3/+T/AgABAAEAAAD4/+T/AgABAAEAAAD5/+T/AgABAAEAAAD6/+T/AgABAAEAAAD7/+T/AgABAAEAAAD8/+T/AgABAAEAAAD9/+T/AgABAAEAAAD+/+T/AgABAAEAAAD//+T/AgABAAEAAAAAAOT/AgABAAEAAAABAOT/AgABAAEAAAACAOT/AgABAAEAAAADAOT/AgABAAEAAAAEAOT/AgABAAEAAAAFAOT/AgABAAEAAAAGAOT/AgABAAEAAAAHAOT/AgABAAEAAAAIAOT/AgABAAEAAAAJAOT/AgABAAEAAAAKAOT/AgABAAEAAAALAOT/AgABAAEAAAAMAOT/AgABAAEAAAANAOT/AgABAAEAAAAOAOT/AgABAAEAAAAPAOT/AgABAAEAAAAQAOT/AgABAAEAAAARAOT/AgABAAEAAAASAOT/AgABAAEAAAATAOT/AgABAAEAAAAUAOT/AgABAAEAAAAVAOT/AgABAAEAAAAWAOT/AgABAAEAAAAXAOT/AgABAAEAAAAYAOT/AgABAAEAAAAZAOT/AgABAAEAAAAaAOT/AgABAAEAAAAbAOT/AgABAAEAAAAcAOT/AgABAAEAAAAdAOT/AgABAAEAAAAeAOT/AgABAAEAAAAfAOT/AgABAAEAAAAgAOT/AgABAAEAAAAhAOT/AgABAAEAAAAiAOT/AgABAAEAAAAjAOT/AgABAAEAAAAkAOT/AgABAAEAAAAlAOT/AgABAAEAAAAmAOT/AgABAAEAAAAnAOT/AgABAAEAAAAoAOT/AgABAAEAAAApAOT/AgABAAEAAAAqAOT/AgABAAEAAAArAOT/AgABAAEAAAAsAOT/AgABAAEAAAAtAOT/AgABAAEAAAAuAOT/AgABAAEAAAAuAOX/AgABAAEAAAAuAOb/AgABAAEAAAAuAOf/AgABAAEAAAAuAOj/AgABAAEAAAAuAOn/AgABAAEAAAAuAOr/AgABAAEAAAAuAOv/AgABAAEAAAAuAOz/AgABAAEAAAAuAO3/AgABAAEAAAAuAO7/AgABAAEAAAAuAO//AgABAAEAAAAuAPD/AgABAAEAAAAuAPH/AgABAAEAAAAuAPL/AgABAAEAAAAuAPP/AgABAAEAAAAuAPT/AgABAAEAAAAuAPX/AgABAAEAAAAvAPb/AgABAAEAAAAvAPf/AgABAAEAAAAvAPj/AgABAAEAAAAvAPn/AgABAAEAAAAvAPr/AgABAAEAAAAvAPv/AgABAAEAAAAvAPz/AgABAAEAAAAvAP3/AgABAAEAAAAvAP7/AgABAAEAAAAvAP//AgABAAEAAAAvAAAAAgABAAEAAAAvAAEAAgABAAEAAAAvAAIAAgABAAEAAAAvAAMAAgABAAEAAAAvAAQAAgABAAEAAAAvAAUAAgABAAEAAAAvAAYAAgABAAEAAAAvAAcAAgABAAEAAAAvAAgAAgABAAEAAAAvAAkAAgABAAEAAAAwAAoAAgABAAEAAAAwAAsAAgABAAEAAAAwAAwAAgABAAEAAAAwAA0AAgABAAEAAAAwAA4AAgABAAEAAAAwAA8AAgABAAEAAAAwABAAAgABAAEAAAAwABEAAgABAAEAAAAwABIAAgABAAEAAAAwABMAAgABAAEAAAAwABQAAgABAAEAAAAwABUAAgABAAEAAAAwABYAAgABAAEAAAAwABcAAgABAAEAAAAwABgAAgABAAEAAAAwABkAAgABAAEAAAAxABoAAgABAAEAAAAxABsAAgABAAEAAAAwABsAAgABAAEAAAAvABsAAgABAAEAAAAuABsAAgABAAEAAAAtABsAAgABAAEAAAAsABoAAgABAAEAAAArABoAAgABAAEAAAAqABoAAgABAAEAAAApABsAAgABAAEAAAAoABsAAgABAAEAAAAnABsAAgABAAEAAAAmABsAAgABAAEAAAAlABsAAgABAAEAAAAkABsAAgABAAEAAAAjABsAAgABAAEAAAAiABwAAgABAAEAAAAhABwAAgABAAEAAAAgABwAAgABAAEAAAAfABwAAgABAAEAAAAeABwAAgABAAEAAAAdABwAAgABAAEAAAAcABwAAgABAAEAAAAbABwAAgABAAEAAAAaABwAAgABAAEAAAAZABwAAgABAAEAAAAYAB0AAgABAAEAAAAXAB0AAgABAAEAAAAWAB0AAgABAAEAAAAVAB0AAgABAAEAAAAUAB0AAgABAAEAAAATAB0AAgABAAEAAAASAB0AAgABAAEAAAARAB0AAgABAAEAAAAQAB0AAgABAAEAAAAPAB0AAgABAAEAAAAOAB0AAgABAAEAAAANAB0AAgABAAEAAAAMAB0AAgABAAEAAAALAB0AAgABAAEAAAAKAB0AAgABAAEAAAAJAB0AAgABAAEAAAAIAB0AAgABAAEAAAAHAB0AAgABAAEAAAAGAB0AAgABAAEAAAAFAB4AAgABAAEAAAAEAB4AAgABAAEAAAADAB4AAgABAAEAAAACAB4AAgABAAEAAAABAB4AAgABAAEAAAAAAB4AAgABAAEAAAD//x4AAgABAAEAAAD+/x4AAgABAAEAAAD9/x4AAgABAAEAAAD8/x4AAgABAAEAAAD7/x4AAgABAAEAAAD6/x4AAgABAAEAAAD5/x4AAgABAAEAAAD4/x4AAgABAAEAAAD3/x4AAgABAAEAAAD2/x4AAgABAAEAAAD1/x4AAgABAAEAAAD0/x4AAgABAAEAAADz/x4AAgABAAEAAADy/x4AAgABAAEAAADx/x8AAgABAAEAAADw/x8AAgABAAEAAADv/x8AAgABAAEAAADu/x8AAgABAAEAAADt/x8AAgABAAEAAADs/x8AAgABAAEAAADr/x8AAgABAAEAAADq/yAAAgABAAEAAADp/yAAAgABAAEAAADo/yAAAgABAAEAAADn/yAAAgABAAEAAADm/yAAAgABAAEAAADl/yAAAgABAAEAAADk/yAAAgABAAEAAADj/yAAAgABAAEAAADi/yAAAgABAAEAAADh/yAAAgABAAEAAADg/yAAAgABAAEAAADf/yAAAgABAAEAAADe/yAAAgABAAEAAADd/yAAAgABAAEAAADc/yAAAgABAAEAAADb/yAAAgABAAEAAADa/yAAAgABAAEAAADZ/yAAAgABAAEAAADY/yEAAgABAAEAAADX/yEAAgABAAEAAADW/yEAAgABAAEAAADV/yEAAgABAAEAAADU/yEAAgABAAEAAADT/yEAAgABAAEAAADS/yEAAgABAAEAAADR/yEAAgABAAEAAADQ/yEAAgABAAEAAADP/yEAAgABAAEAAADP/yIAAgABAAEAAADO/yIAAgABAAEAAADO/yEAAgABAAEAAADO/yAAAgABAAEAAADO/x8AAgABAAEAAADP/x4AAgABAAEAAADP/x0AAgABAAEAAADP/xwAAgABAAEAAADP/xsAAgABAAEAAADP/xoAAgABAAEAAADP/xkAAgABAAEAAADQ/xgAAgABAAEAAADQ/xcAAgABAAEAAADQ/xYAAgABAAEAAADQ/xUAAgABAAEAAADQ/xQAAgABAAEAAADQ/xMAAgABAAEAAADQ/xIAAgABAAEAAADQ/xEAAgABAAEAAADQ/xAAAgABAAEAAADQ/w8AAgABAAEAAADQ/w4AAgABAAEAAADQ/w0AAgABAAEAAADQ/wwAAgABAAEAAADQ/wsAAgABAAEAAADR/woAAgABAAEAAADR/wkAAgABAAEAAADR/wgAAgABAAEAAADR/wcAAgABAAEAAADR/wYAAgABAAEAAADR/wUAAgABAAEAAADR/wQAAgABAAEAAADS/wMAAgABAAEAAADS/wIAAgABAAEAAADS/wEAAgABAAEAAADS/wAAAgABAAEAAADS////AgABAAEAAADT//7/AgABAAEAAADT//3/AgABAAEAAADT//z/AgABAAEAAADT//v/AgABAAEAAADT//r/AgABAAEAAADT//n/AgABAAEAAADU//j/AgABAAEAAADU//f/AgABAAEAAADU//b/AgABAAEAAADU//X/AgABAAEAAADU//T/AgABAAEAAADU//P/AgABAAEAAADU//L/AgABAAEAAADU//H/AgABAAEAAADU//D/AgABAAEAAADU/+//AgABAAEAAADU/+7/AgABAAEAAADU/+3/AgABAAEAAADU/+z/AgABAAEAAADU/+v/AgABAAEAAADU/+r/AgABAAEAAADV/+n/AgABAAEAAADV/+j/AgABAAEAAADV/+f/AgABAAEAAADV/+b/AgABAAEAAADV/+X/AgABAAEAAADW/+T/AgABAAEAAADW/+P/AgABAAEAAADX/+P/AgABAAEAAADY/+P/AgABAAEAAADZ/+P/AgABAAEAAADa/+P/AgABAAEAAADb/+P/AgABAAEAAADc/+P/AgABAAEAAADd/+P/AgABAAEAAADe/+P/AgABAAEAAAA=")
+tile_set = SubResource("TileSet_tipki")
+
+[node name="Soil" type="TileMapLayer" parent="World" unique_id=687827692]
+z_index = -1
+texture_filter = 1
+tile_set = SubResource("TileSet_tbgi4")
+
+[node name="Diggable" type="TileMapLayer" parent="World" unique_id=1206364738]
+visible = false
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAALAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAAJAAcAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAD//wcAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_icqri")
+
+[node name="SelectionPreview" type="TileMapLayer" parent="World" unique_id=528742104]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_y2l6j")
+tile_set = SubResource("TileSet_o6xl0")
+
+[node name="SelectedAnim" type="AnimatedSprite2D" parent="World/SelectionPreview" unique_id=1386218274]
+visible = false
+sprite_frames = SubResource("SpriteFrames_icqri")
+frame = 3
+frame_progress = 0.8815864
+speed_scale = 2.0
+
+[node name="Drops" type="Node2D" parent="World" unique_id=1313146701 groups=["drops"]]
+
+[node name="Entities" type="Node2D" parent="World" unique_id=1470660227]
+y_sort_enabled = true
+
+[node name="Player" type="CharacterBody2D" parent="World/Entities" unique_id=336309734 groups=["player"]]
+z_index = 2
+position = Vector2(19, 20)
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_jyhfs")
+seed = ExtResource("7_eb6dy")
+hoe = ExtResource("14_vxglm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Entities/Player" unique_id=81355650]
+position = Vector2(0, 13)
+shape = SubResource("RectangleShape2D_muem4")
+
+[node name="Camera2D" type="Camera2D" parent="World/Entities/Player" unique_id=1751704670]
+zoom = Vector2(1.5, 1.5)
+
+[node name="Дед" type="Sprite2D" parent="World/Entities/Player" unique_id=588398627]
+z_index = 1
+texture_filter = 3
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+texture = ExtResource("2_tbgi4")
+
+[node name="InputComponent" type="Node" parent="World/Entities/Player" unique_id=221181934 node_paths=PackedStringArray("ground_layer")]
+script = ExtResource("3_tbgi4")
+ground_layer = NodePath("../../../Soil")
+
+[node name="MovementComponent" type="Node" parent="World/Entities/Player" unique_id=317767482]
+script = ExtResource("4_tefeu")
+
+[node name="PlotSelectComponent" type="Node" parent="World/Entities/Player" unique_id=1530576485 node_paths=PackedStringArray("soil_layer", "preview_layer", "farm")]
+script = ExtResource("5_tbgi4")
+soil_layer = NodePath("../../../Soil")
+preview_layer = NodePath("../../../SelectionPreview")
+farm = NodePath("../../../../Systems/Farm")
+
+[node name="PlantComponent" type="Node" parent="World/Entities/Player" unique_id=651897507 node_paths=PackedStringArray("input", "selector", "farm", "inventory_comp")]
+script = ExtResource("12_jkv2x")
+input = NodePath("../InputComponent")
+selector = NodePath("../PlotSelectComponent")
+farm = NodePath("../../../../Systems/Farm")
+inventory_comp = NodePath("../InventoryComponent")
+
+[node name="InventoryComponent" type="Node" parent="World/Entities/Player" unique_id=191120833 groups=["player_inventory"]]
+script = ExtResource("6_o6xl0")
+
+[node name="UIComponent" type="Node" parent="World/Entities/Player" unique_id=142195541 node_paths=PackedStringArray("farm", "selector", "inv_comp")]
+script = ExtResource("14_jbj1t")
+farm = NodePath("../../../../Systems/Farm")
+selector = NodePath("../PlotSelectComponent")
+inv_comp = NodePath("../InventoryComponent")
+
+[node name="HealthSystem" type="Node" parent="World/Entities/Player" unique_id=921552606 node_paths=PackedStringArray("sprite")]
+script = ExtResource("18_2wyq8")
+sprite = NodePath("../Дед")
+
+[node name="ShootingComponent" type="Node" parent="World/Entities/Player" unique_id=1421861856]
+script = ExtResource("26_5he1u")
+
+[node name="Crops" type="Node2D" parent="World/Entities" unique_id=720615601]
+
+[node name="Enemies" type="Node2D" parent="World/Entities" unique_id=827090988]
+y_sort_enabled = true
+
+[node name="Systems" type="Node" parent="." unique_id=442766632]
+
+[node name="Farm" type="Node" parent="Systems" unique_id=1323305321 node_paths=PackedStringArray("soil", "ground", "diggable", "crops_root", "player")]
+script = ExtResource("13_a8y0u")
+soil = NodePath("../../World/Soil")
+ground = NodePath("../../World/Ground")
+diggable = NodePath("../../World/Diggable")
+crops_root = NodePath("../../World/Entities/Crops")
+crop_scene = ExtResource("14_jkv2x")
+player = NodePath("../../World/Entities/Player")
+
+[node name="EnemySpawner" type="Node" parent="Systems" unique_id=1210842153 node_paths=PackedStringArray("enemies_root", "player")]
+script = ExtResource("20_2f3dj")
+enemy_scene = ExtResource("21_fv21b")
+pool = Array[ExtResource("21_yq6so")]([ExtResource("23_fv21b")])
+enemies_root = NodePath("../../World/Entities/Enemies")
+player = NodePath("../../World/Entities/Player")
+
+[node name="Pathfinder" type="Node" parent="Systems" unique_id=1650740212 node_paths=PackedStringArray("ground", "obstacle_layers")]
+script = ExtResource("20_2wyq8")
+ground = NodePath("../../World/Ground")
+obstacle_layers = [NodePath("../../World/Ground")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=685938803]
+
+[node name="HarvestPrompt" type="PanelContainer" parent="UI" unique_id=149256574 node_paths=PackedStringArray("hint")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 100.0
+offset_right = 100.0
+offset_bottom = 160.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_icqri")
+script = ExtResource("17_muem4")
+hint = NodePath("../../World/Entities/Player/UIComponent")
+
+[node name="Label" type="Label" parent="UI/HarvestPrompt" unique_id=530381403]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 32
+text = "Harvest ( F )"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="InventoryContainer" type="PanelContainer" parent="UI" unique_id=1796511105]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = 212.0
+offset_right = 270.0
+offset_bottom = 284.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_atnei")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/InventoryContainer" unique_id=223625039]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/InventoryContainer/CenterContainer" unique_id=1570095741]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/InventoryContainer/CenterContainer/MarginContainer" unique_id=455147719]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Slot1" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1924472841]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1874612255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1152684648]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1464931423]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot1" unique_id=1331230802]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot2" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=851361316]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=182569563]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1402621476]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1324235955]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "2"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot2" unique_id=1238617469]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot3" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=2098414416]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=142907452]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=723233254]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=447633447]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot3" unique_id=964366299]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot4" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=498950267]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=1810066761]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=868372102]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=1400864540]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "4"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot4" unique_id=346576242]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot5" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1443667966]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=1955295196]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=1842728043]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=1184815852]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "5"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot5" unique_id=886873782]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot6" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=324355325]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=948462361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=1591067834]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=1770403154]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "6"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot6" unique_id=950918707]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot7" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1776861630]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=487019440]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=1421591718]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=874708945]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "7"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot7" unique_id=979733046]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot8" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=837171798]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=341431951]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=1827043541]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=1756713490]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "8"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot8" unique_id=1095594395]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="Slot9" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer" unique_id=1001942886]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("22_y6deb")
+stretch_mode = 5
+script = ExtResource("23_pm3ni")
+normal_texture = ExtResource("22_y6deb")
+selected_texture = ExtResource("24_og1vs")
+
+[node name="Label" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=789436583]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 9
+autowrap_mode = 2
+clip_text = true
+uppercase = true
+
+[node name="Count" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=1794269750]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Num" type="Label" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=1724551865]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_right = -4.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("25_og1vs")
+theme_override_font_sizes/font_size = 14
+text = "9"
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="UI/InventoryContainer/CenterContainer/MarginContainer/HBoxContainer/Slot9" unique_id=741656861]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 5
+
+[node name="HealthContainer" type="PanelContainer" parent="UI" unique_id=281249758]
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 189.0
+offset_bottom = 45.0
+
+[node name="HealthLabel" type="Label" parent="UI/HealthContainer" unique_id=2006783149]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("25_vxglm")
+theme_override_font_sizes/font_size = 24
+text = "HP: 100/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MessageLog" type="VBoxContainer" parent="UI" unique_id=928073626]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -238.0
+offset_right = 273.0
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 6
+script = ExtResource("39_c6pm6")
+
+[node name="Ambient" type="CanvasModulate" parent="." unique_id=853558524]
