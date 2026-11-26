@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var inventory_comp: InventoryComponent = $InventoryComponent
 @onready var ui_comp: UIComponent = $UIComponent
+@onready var shooting: ShootingComponent = $ShootingComponent
 
 @export var seed: SeedItem
 @export var hoe: ItemData
@@ -21,6 +22,7 @@ func _ready() -> void:
 	
 func checkInventory() -> void: # debug only
 	inventory_comp.inventory.add(seed, 5)
+	_give_starting_loadout()
 	
 	if inventory_comp.inventory.count(hoe) == 0: inventory_comp.inventory.add(hoe, 1)
 		
@@ -50,3 +52,19 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		return
 	movement_component.move(self, input_component.move_direction, delta)
+	
+func _give_starting_loadout() -> void:
+	var inv := inventory_comp.inventory
+	var pistol := ItemDatabase.create_item(&"pistol")
+	var ammo := ItemDatabase.create_item(&"ammo_pistol")
+	
+	if pistol == null:
+		print("ОШИБКА: pistol.tres не загружен! Проверь id в файле.")
+		return
+	if ammo == null:
+		print("ОШИБКА: ammo_pistol.tres не загружен!")
+		return
+	
+	if inv.count(pistol) < 1:
+		inv.add_to_slot(pistol, 6, 1)
+	inv.add(ammo, 30)

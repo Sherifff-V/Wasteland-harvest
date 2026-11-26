@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dbgmp3y7eq1yp"]
+
+[ext_resource type="Script" uid="uid://cnhyvsimoy4pl" path="res://data/ItemData.gd" id="1_rek7p"]
+
+[resource]
+script = ExtResource("1_rek7p")
+id = &"ammo_pistol"
+display_name = "Патроны пистолета"
+max_stack = 100
+metadata/_custom_type_script = "uid://cnhyvsimoy4pl"

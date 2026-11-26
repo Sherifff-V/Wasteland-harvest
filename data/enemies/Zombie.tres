@@ -10,4 +10,5 @@ script = ExtResource("3_pfy13")
 id = &"zombie"
 display_name = "Zombie"
 texture = ExtResource("4_h47p1")
+max_health = 20
 drops = Array[ExtResource("1_u7gq5")]([ExtResource("2_rjoty")])

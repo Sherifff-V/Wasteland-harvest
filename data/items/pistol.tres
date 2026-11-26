@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dj0oa45q6mjr0"]
+
+[ext_resource type="Script" uid="uid://cvyeq2xa2wlaq" path="res://data/items/WeaponData.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dbygif6b0mttc" path="res://scenes/bullet.tscn" id="1_jc6um"]
+
+[resource]
+script = ExtResource("1")
+damage = 3
+bullet_scene = ExtResource("1_jc6um")
+id = &"pistol"
+display_name = "Пистолет"
+max_stack = 1
