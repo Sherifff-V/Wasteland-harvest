@@ -57,7 +57,7 @@ func _give_starting_loadout() -> void:
 	var inv := inventory_comp.inventory
 	var pistol := ItemDatabase.create_item(&"pistol")
 	var ammo := ItemDatabase.create_item(&"ammo_pistol")
-	
+
 	if pistol == null:
 		print("ОШИБКА: pistol.tres не загружен! Проверь id в файле.")
 		return
@@ -65,6 +65,11 @@ func _give_starting_loadout() -> void:
 		print("ОШИБКА: ammo_pistol.tres не загружен!")
 		return
 	
+<<<<<<< HEAD
 	if inv.count(pistol) < 1:
 		inv.add_to_slot(pistol, 6, 1)
 	inv.add(ammo, 30)
+=======
+	inv.add_to_slot(pistol, 6, 1)
+	inv.add_to_slot(ammo, 7, 30)
+>>>>>>> 13ab6e32efbf3f0a5cdc822536e4064b72479d07

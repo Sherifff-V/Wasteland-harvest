@@ -7,8 +7,11 @@ class_name EnemySpawner extends Node
 @export var max_alive := 6
 @export var spawn_distance := 350.0
 @export var interval := 4.0
+@export var bounds: MapBounds
+@export var pathfinder: GridPathfinder
 
 var _was_night := false
+var offscreen_range := 50.0
 
 func _ready() -> void:
 	var t := Timer.new()
@@ -22,14 +25,28 @@ func _on_tick() -> void:
 	if night and enemies_root.get_child_count() < max_alive:
 		_spawn()
 	elif _was_night and not night:
-		for e in enemies_root.get_children(): #deletion algorithm
+		for e in enemies_root.get_children(): # deletion algorithm
 			#e.queue_free()
 			pass
 	_was_night = night
 
 func _spawn() -> void:
+	var pos: Variant = _find_spawn_position()
+	if pos == null:
+		return
 	var enemy: Enemy = enemy_scene.instantiate() as Enemy
 	enemy.data = pool.pick_random()
 	enemies_root.add_child(enemy)
-	var angle := randf() * TAU
-	enemy.global_position = player.global_position + Vector2.from_angle(angle) * spawn_distance
+	enemy.global_position = pos
+	print("enemy spawned at ", pos)
+
+func _find_spawn_position() -> Variant:
+	var center := bounds.world_rect.get_center()
+	var bounds_length := bounds.world_rect.size.length()
+	var ring := bounds_length / 2.0 + offscreen_range
+	
+	for attempt in 20:
+		var pos := center + Vector2.from_angle(deg_to_rad(randf_range(45.0, 135.0))) * ring * randf_range(1.0, 1.3)
+		#if bounds.contains_world(pos) and pathfinder.is_walkable(pos):
+		return pos
+	return null
