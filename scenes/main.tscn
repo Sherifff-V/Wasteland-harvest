@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://d31227tthh0c7" path="res://scripts/farm/PlotSelectComponent.gd" id="5_tbgi4"]
 [ext_resource type="Texture2D" uid="uid://6j8ktp0chy22" path="res://sprites/ground/selection/selection2_confirm.png" id="5_ya4ey"]
 [ext_resource type="Script" uid="uid://cyyatj7cttkrh" path="res://scripts/inventory/InventoryComponent.gd" id="6_o6xl0"]
-[ext_resource type="Resource" uid="uid://cjxm30isefoj4" path="res://data/items/Cucumber_seed.tres" id="7_eb6dy"]
 [ext_resource type="Texture2D" uid="uid://kfwgwytfo5bd" path="res://sprites/ground/soil_tile1.png" id="7_og1vs"]
 [ext_resource type="Texture2D" uid="uid://c5etnims8fjst" path="res://sprites/ground/selection/selection_confirm_anim1.png" id="8_pibwh"]
 [ext_resource type="Texture2D" uid="uid://c4k7uwa7xccrc" path="res://sprites/ground/selection/selection_confirm_anim2.png" id="9_c6pm6"]
@@ -25,7 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://cb0qkdw1iobwm" path="res://sprites/ground/selection/selection_confirm_anim7.png" id="14_cjqg0"]
 [ext_resource type="Script" uid="uid://dhg486wxkevyl" path="res://scripts/ui/UIComponent.gd" id="14_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://dq0ygdxje4js5" path="res://scenes/crop.tscn" id="14_jkv2x"]
-[ext_resource type="Resource" uid="uid://ct4sh0w1cmus5" path="res://data/items/Hoe.tres" id="14_vxglm"]
 [ext_resource type="Script" uid="uid://ckevbdcpdemh3" path="res://scripts/ui/HarvestPrompt.gd" id="17_muem4"]
 [ext_resource type="Script" uid="uid://dtldiom4kfncw" path="res://scripts/systems/HP_Script.gd" id="18_2wyq8"]
 [ext_resource type="Script" uid="uid://de1v3xebefjbb" path="res://scripts/enemy/EnemySpawner.gd" id="20_2f3dj"]
@@ -577,8 +575,6 @@ position = Vector2(1115, 716)
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_jyhfs")
-seed = ExtResource("7_eb6dy")
-hoe = ExtResource("14_vxglm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Entities/Player" unique_id=81355650]
 position = Vector2(0, 13)
@@ -661,7 +657,7 @@ script = ExtResource("20_2wyq8")
 ground = NodePath("../../World/Ground")
 obstacle_layers = [NodePath("../../World/Ground")]
 
-[node name="MapBounds" type="Node" parent="Systems" unique_id=1842057517 node_paths=PackedStringArray("ground")]
+[node name="MapBounds" type="Node" parent="Systems" unique_id=1842057517 node_paths=PackedStringArray("ground") groups=["map_bounds"]]
 script = ExtResource("33_5he1u")
 ground = NodePath("../../World/Ground")
 

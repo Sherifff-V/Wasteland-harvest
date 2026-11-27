@@ -6,9 +6,6 @@ class_name Player extends CharacterBody2D
 @onready var ui_comp: UIComponent = $UIComponent
 @onready var shooting: ShootingComponent = $ShootingComponent
 
-@export var seed: SeedItem
-@export var hoe: ItemData
-
 #хп
 @onready var hp_sys = $HealthSystem
 
@@ -21,10 +18,7 @@ func _ready() -> void:
 	
 	
 func checkInventory() -> void: # debug only
-	inventory_comp.inventory.add(seed, 5)
 	_give_starting_loadout()
-	
-	if inventory_comp.inventory.count(hoe) == 0: inventory_comp.inventory.add(hoe, 1)
 		
 	var selected_item = inventory_comp.get_selected().item
 	if selected_item:
@@ -57,6 +51,8 @@ func _give_starting_loadout() -> void:
 	var inv := inventory_comp.inventory
 	var pistol := ItemDatabase.create_item(&"pistol")
 	var ammo := ItemDatabase.create_item(&"ammo_pistol")
+	var hoe := ItemDatabase.create_item(&"hoe")
+	var seed := ItemDatabase.create_item(&"cucumber_seed")
 
 	if pistol == null:
 		print("ОШИБКА: pistol.tres не загружен! Проверь id в файле.")
@@ -65,11 +61,10 @@ func _give_starting_loadout() -> void:
 		print("ОШИБКА: ammo_pistol.tres не загружен!")
 		return
 	
-<<<<<<< HEAD
+	if inventory_comp.inventory.count(hoe) == 0: 
+		inventory_comp.inventory.add(hoe, 1)
+	inventory_comp.inventory.add(seed, 5)
+	
 	if inv.count(pistol) < 1:
 		inv.add_to_slot(pistol, 6, 1)
-	inv.add(ammo, 30)
-=======
-	inv.add_to_slot(pistol, 6, 1)
 	inv.add_to_slot(ammo, 7, 30)
->>>>>>> 13ab6e32efbf3f0a5cdc822536e4064b72479d07

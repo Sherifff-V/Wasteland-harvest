@@ -28,3 +28,4 @@ script = ExtResource("3_xwavj")
 
 [node name="MovementComponent" type="Node" parent="." unique_id=61125969]
 script = ExtResource("4_nenq2")
+arrive_distance = 18.0
