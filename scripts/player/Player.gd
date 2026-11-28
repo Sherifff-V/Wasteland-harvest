@@ -66,5 +66,5 @@ func _give_starting_loadout() -> void:
 	inventory_comp.inventory.add(seed, 5)
 	
 	if inv.count(pistol) < 1:
-		inv.add_to_slot(pistol, 6, 1)
-	inv.add_to_slot(ammo, 7, 30)
+		inv.add(pistol, 1)
+	inv.add(ammo, 30)

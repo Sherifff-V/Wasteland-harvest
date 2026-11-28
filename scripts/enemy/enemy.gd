@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	if target:
 		velocity = movement.get_direction(target, delta) * data.speed
-	print(global_position)
 	move_and_slide()
 	_attack()
 

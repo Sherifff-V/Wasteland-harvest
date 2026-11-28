@@ -38,7 +38,7 @@ func _spawn() -> void:
 	enemy.data = pool.pick_random()
 	enemies_root.add_child(enemy)
 	enemy.global_position = pos
-	print("enemy spawned at ", pos)
+	#print("enemy spawned at ", pos)
 
 func _find_spawn_position() -> Variant:
 	var center := bounds.world_rect.get_center()
@@ -47,6 +47,5 @@ func _find_spawn_position() -> Variant:
 	
 	for attempt in 20:
 		var pos := center + Vector2.from_angle(deg_to_rad(randf_range(45.0, 135.0))) * ring * randf_range(1.0, 1.3)
-		#if bounds.contains_world(pos) and pathfinder.is_walkable(pos):
 		return pos
 	return null

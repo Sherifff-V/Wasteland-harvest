@@ -38,7 +38,6 @@ func take_damage(amount : int) -> void:
 	hp_changed.emit(hp)
 	sprite.modulate = Color(3, 0.4, 0.4)
 	var tween := create_tween().set_parallel(true)
-	print(sprite.texture)
 	tween.tween_property(sprite, "modulate", Color.WHITE, 0.15)
 
 	if isDead:

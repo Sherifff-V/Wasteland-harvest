@@ -67,7 +67,7 @@ func plant(cell: Vector2i, crop_data: CropData) -> bool:
 	crop.cell = cell
 	crop.add_to_group("crop")
 	crops_root.add_child(crop)
-	crop.global_position = soil.to_global(soil.map_to_local(cell)) + crop_data.offset
+	crop.global_position = soil.to_global(soil.map_to_local(cell)) + Vector2(0, soil.tile_set.tile_size.y / 2.0 - Crop.FOOT_Y)
 	crop.setup(crop_data)
 	crops[cell] = crop
 	
@@ -114,6 +114,5 @@ func nearest_harvestable(center: Vector2i, radius: float) -> Vector2i:
 		
 		if d <= radius and d < best_dist:
 			best = cell
-			
-		best_dist = d
+			best_dist = d
 	return best

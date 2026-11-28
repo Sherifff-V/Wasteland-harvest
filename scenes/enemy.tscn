@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://nbqncdaqieny" path="res://scripts/enemy/EnemyMovementComponent.gd" id="4_nenq2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icqri"]
+size = Vector2(14, 8)
 
 [node name="Zombie" type="CharacterBody2D" unique_id=624883747]
 collision_layer = 4
@@ -15,9 +16,11 @@ script = ExtResource("1_5uy6h")
 data = ExtResource("2_xwavj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1040555294]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_icqri")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=791034535]
+position = Vector2(0, -9)
 
 [node name="HealthComponent" type="Node" parent="." unique_id=929556633 node_paths=PackedStringArray("sprite")]
 script = ExtResource("3_c4w8v")
