@@ -35,3 +35,4 @@ func interact(cell: Vector2i, item: ItemData) -> void:
 	else:
 		if item != null and item.id == "cucumber_seed" and farm.plant(cell, item.crop):
 			inventory_comp.inventory.remove(item, 1)
+			Messages.post("-%d %s" % [1, item.display_name])

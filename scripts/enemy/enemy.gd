@@ -9,12 +9,16 @@ var target: Node2D
 
 func _ready() -> void:
 	sprite.texture = data.texture
+	
 	health_comp.setup(data.max_health)
 	health_comp.died.connect(_on_died)
+	
 	target = get_tree().get_first_node_in_group("player")
+	
 	movement.player_range = data.detection_range
 	movement.enemy_attack_reach = data.attack_reach
 	movement.reached_goal.connect(_on_reached_goal)
+	
 	damage_comp.attack_interval = data.attack_interval
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +39,10 @@ func _attack() -> void:
 	
 	if target and global_position.distance_to(target.global_position) <= data.attack_reach:
 		damage_comp.try_attack(target)
-			
+
+func take_damage(amount: int) -> void:
+	health_comp.take_damage(amount)
+
 func _on_died() -> void:
 	print("enemy killed the player")
 	queue_free()

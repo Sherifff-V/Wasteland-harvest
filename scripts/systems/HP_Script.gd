@@ -23,7 +23,7 @@ func heal(amount:int) -> void:
 		return
 	hp = mini(hp + amount, maxhp)
 	hp_changed.emit(hp)
-	#print("HP: ", hp, "/", maxhp)
+	print("HP: ", hp, "/", maxhp)
 	
 	
 #ф-ия получения урона
@@ -36,7 +36,7 @@ func take_damage(amount : int) -> void:
 		isDead = true
 
 	hp_changed.emit(hp)
-	sprite.modulate = Color(1, 0.4, 0.4)
+	sprite.modulate = Color(3, 0.4, 0.4)
 	var tween := create_tween().set_parallel(true)
 	tween.tween_property(sprite, "modulate", Color.WHITE, 0.15)
 

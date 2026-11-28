@@ -5,7 +5,6 @@ signal reached_goal(goal: Node2D)
 @export var repath_interval := 0.4
 @export var direct_range := 40.0
 @export var arrive_distance := 5.0
-@export var prefer_crops := false
 
 @export_group("Crop raid roll")
 @export var roll_sides := 5
@@ -16,10 +15,12 @@ signal reached_goal(goal: Node2D)
 var player_range := 200.0
 var enemy_attack_reach := 1.0
 var pathfinder: GridPathfinder
+var bounds: MapBounds
 var goal: Node2D # null means goal cant be reached or no goal at all
 var raiding := false
 var reached := false
 
+# moving in bounds
 var _path := PackedVector2Array()
 var _index := 0
 var _repath_timer := 0.0
@@ -32,25 +33,42 @@ var _is_walking = false;
 const walk_cd := 6.0;
 const plant_check_interval := 5.0
 
+# out of bounds moving
+var _returning_to_center = false
+
 @onready var body: CharacterBody2D = get_parent()
 
 func _ready() -> void:
 	pathfinder = get_tree().get_first_node_in_group("pathfinder")
+	bounds = get_tree().get_first_node_in_group("map_bounds")
 	_repath_timer = randf() * repath_interval # repath on different frames
 	_plant_check_timer = plant_check_interval
 
 func get_direction(player: Node2D, delta: float) -> Vector2:
 	if pathfinder == null:
-		return body.global_position.direction_to(player.global_position)
+		#print("moving to center")
+		return body.global_position.direction_to(bounds.world_rect.get_center())
 	
 	var player_in_range := body.global_position.distance_to(player.global_position) <= player_range
-	
+	var offset: Vector2 = (body.global_position - bounds.world_rect.get_center()).abs()
+	var half_size: Vector2 = bounds.world_rect.size * 0.5
+
 	if player_in_range:
 		if raiding:
 			end_raid()
 		
 		return _normal_step(player, delta)
 		
+	else:
+		if offset.x > half_size.x or offset.y > half_size.y:
+			_returning_to_center = true
+
+		if _returning_to_center:
+			if offset.x <= half_size.x - 200.0 and offset.y <= half_size.y - 200.0:
+				_returning_to_center = false
+			else:
+				return body.global_position.direction_to(bounds.world_rect.get_center())
+
 	if raiding:
 		return _raid_step(delta)
 

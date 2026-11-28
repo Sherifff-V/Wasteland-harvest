@@ -35,7 +35,7 @@ func _on_area_entered(area: Area2D) -> void:
 	_hit(area)
 
 func _hit(target: Node) -> void:
-	if target == _shooter or target.is_in_group("player"):
+	if target == _shooter or target.is_in_group("player"):# or target.is_in_group("crop"):
 		return
 	if target.has_method("take_damage"):
 		target.take_damage(damage)
